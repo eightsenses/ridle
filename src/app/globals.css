@@ -1,17 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import './styles/_tokens.css';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: var(--colors-semantic-bg-default);
+  --foreground: var(--colors-semantic-text-default);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: var(
+      --colors-semantic-bg-default
+    ); /* _tokens.css 内の .dark が効くので同値でもOK */
+    --foreground: var(--colors-semantic-text-default);
   }
+}
+
+.dark {
+  --background: var(--colors-semantic-bg-default);
+  --foreground: var(--colors-semantic-text-default);
 }
 
 body {
@@ -20,8 +28,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+@utility text-balance {
+  text-wrap: balance;
 }
