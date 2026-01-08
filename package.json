@@ -4,23 +4,31 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:lan": "next dev -H 192.168.11.5",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "^6.19.1",
+    "next": "^14.2.33",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "^14.2.33"
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@markuplint/jsx-parser": "^4.7.21",
+    "@markuplint/react-spec": "^4.5.21",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
     "eslint": "^8",
-    "eslint-config-next": "14.2.16"
+    "eslint-config-next": "14.2.16",
+    "markuplint": "^4.13.1",
+    "postcss": "^8",
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.7.1",
+    "prisma": "^6.19.1",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }

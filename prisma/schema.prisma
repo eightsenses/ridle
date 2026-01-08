@@ -1,0 +1,174 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Profile {
+  id                Int      @id @default(autoincrement())
+  supabaseUserId    String   @unique
+  userName          String   @unique
+  displayName       String
+  thumbnailImageUrl String?
+  surfHistoryYears  Int?
+  bio               String?
+  snsInsta          String?
+  snsFacebook       String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  goals      Goal[]
+  sessions   Session[]
+  userSpots  UserSpot[]
+  SpotReport SpotReport[]
+
+  followers Follow[] @relation("ProfileFollowers")
+  following Follow[] @relation("ProfileFollowing")
+
+  sentMessages     Message[] @relation("MessageSender")
+  receivedMessages Message[] @relation("MessageReceiver")
+}
+
+model Follow {
+  id                Int       @id @default(autoincrement())
+  followerProfileId Int
+  followeeProfileId Int
+  status            String
+  requestedAt       DateTime  @default(now())
+  respondedAt       DateTime?
+
+  followeeProfile Profile @relation("ProfileFollowers", fields: [followeeProfileId], references: [id])
+  followerProfile Profile @relation("ProfileFollowing", fields: [followerProfileId], references: [id])
+
+  @@unique([followerProfileId, followeeProfileId])
+  @@index([followeeProfileId])
+  @@index([followerProfileId])
+}
+
+model Message {
+  id                Int       @id @default(autoincrement())
+  senderProfileId   Int
+  receiverProfileId Int
+  body              String
+  createdAt         DateTime  @default(now())
+  readAt            DateTime?
+
+  senderProfile   Profile @relation("MessageSender", fields: [senderProfileId], references: [id])
+  receiverProfile Profile @relation("MessageReceiver", fields: [receiverProfileId], references: [id])
+
+  @@index([senderProfileId])
+  @@index([receiverProfileId])
+  @@index([createdAt])
+}
+
+model Goal {
+  id          Int      @id @default(autoincrement())
+  profileId   Int
+  month       DateTime
+  targetHours Int?
+  targetRides Int?
+  note        String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  profile Profile @relation(fields: [profileId], references: [id])
+
+  @@unique([profileId, month])
+  @@index([profileId])
+  @@index([month])
+}
+
+model Session {
+  id                Int      @id @default(autoincrement())
+  profileId         Int
+  spotId            Int
+  date              DateTime
+  surfTimeMinutes   Int
+  rideCount         Int
+  challengeNote     String?
+  thumbnailImageUrl String?
+  ratings           String[]
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  profile Profile @relation(fields: [profileId], references: [id])
+  spot    Spot    @relation(fields: [spotId], references: [id])
+
+  @@index([profileId])
+  @@index([spotId])
+  @@index([date])
+}
+
+model UserSpot {
+  id         Int    @id @default(autoincrement())
+  profileId  Int
+  spotId     Int
+  label      String
+  orderIndex Int
+
+  profile Profile @relation(fields: [profileId], references: [id])
+  spot    Spot    @relation(fields: [spotId], references: [id])
+
+  @@unique([profileId, spotId])
+  @@index([profileId])
+  @@index([spotId])
+}
+
+model Area {
+  id             Int    @id @default(autoincrement())
+  name           String
+  region         String
+  prefectureCode String
+
+  spots Spot[]
+}
+
+model Spot {
+  id          Int    @id @default(autoincrement())
+  areaId      Int
+  name        String
+  lat         Float
+  lon         Float
+  orientation String
+  notes       String
+
+  area Area @relation(fields: [areaId], references: [id])
+
+  // relations
+  sessions    Session[]
+  userSpots   UserSpot[]
+  spotReports SpotReport[]
+
+  @@index([areaId])
+}
+
+model SpotReport {
+  id         Int      @id @default(autoincrement())
+  profileId  Int
+  spotId     Int
+  observedAt DateTime
+  comment    String
+  waveSize   String
+  face       String
+  wind       String
+  windDir    String
+  windSpeed  Int
+  waterTemp  Int
+  airTemp    Int
+  tidePhase  String
+  createdAt  DateTime @default(now())
+
+  profile Profile @relation(fields: [profileId], references: [id])
+  spot    Spot    @relation(fields: [spotId], references: [id])
+
+  @@index([profileId])
+  @@index([spotId])
+  @@index([observedAt])
+}
