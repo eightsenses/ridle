@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { AuthFormData } from '@/app/_types/auth';
+import Input from '@/app/_components/Input';
+import Button from '@/app/_components/Button';
 
 const signupSchema = z.object({
   name: z.string().min(1, 'ユーザーネームは必須です'),
@@ -42,56 +44,47 @@ const AuthForm: React.FC<AuthFormProps> = ({ onSubmit, buttonText, isShowName = 
     resolver: zodResolver(isShowName ? signupSchema : loginSchema)
   });
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="grid w-full gap-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="grid gap-6">
       {isShowName && (
-        <div>
-          <label className="mb-2 block text-[14px] font-medium text-[var(--colors-semantic-text-default)]">
-            ユーザーネーム
-          </label>
-          <input
+        <div className="w-full">
+          <Input
+            label="ユーザーネーム"
             type="text"
             placeholder="ニックネームを入力"
-            {...register('name')}
-            className="w-full rounded-md border border-[var(--colors-semantic-border-default)] bg-white px-4 py-3 text-[16px] leading-normal text-[var(--colors-semantic-text-black)] placeholder:text-[var(--colors-semantic-text-placeholder)] focus:border-[var(--colors-semantic-border-focus)] focus:outline-none"
+            field="name"
+            register={register}
+            isSubmitting={isSubmitting}
+            error={errors.name?.message}
           />
-          {errors.name && <p className="mt-1 text-[14px] text-red-700">{errors.name.message}</p>}
         </div>
       )}
       <div>
-        <label className="mb-2 block text-[14px] font-medium text-[var(--colors-semantic-text-default)]">
-          メールアドレス
-        </label>
-        <input
+        <Input
+          label="メールアドレス"
           type="email"
           placeholder="メールアドレス"
-          {...register('email')}
-          className="w-full rounded-md border border-[var(--colors-semantic-border-default)] bg-white px-4 py-3 text-[16px] leading-normal text-[var(--colors-semantic-text-black)] placeholder:text-[var(--colors-semantic-text-placeholder)] focus:border-[var(--colors-semantic-border-focus)] focus:outline-none"
+          field="email"
+          register={register}
+          isSubmitting={isSubmitting}
+          error={errors.email?.message}
         />
-        {errors.email && <p className="mt-1 text-[14px] text-red-700">{errors.email.message}</p>}
       </div>
 
       <div>
-        <label className="mb-2 block text-[14px] font-medium text-[var(--colors-semantic-text-default)]">
-          パスワード
-        </label>
-        <input
+        <Input
+          label="パスワード"
           type="password"
           placeholder="パスワード"
-          {...register('password')}
-          className="w-full rounded-md border border-[var(--colors-semantic-border-default)] bg-white px-4 py-3 text-[16px] leading-normal text-[var(--colors-semantic-text-black)] placeholder:text-[var(--colors-semantic-text-placeholder)] focus:border-[var(--colors-semantic-border-focus)] focus:outline-none"
+          field="password"
+          register={register}
+          isSubmitting={isSubmitting}
+          error={errors.password?.message}
         />
-        {errors.password && (
-          <p className="mt-1 text-[14px] text-red-700">{errors.password.message}</p>
-        )}
       </div>
 
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="min-w-[140px] rounded-full bg-[var(--colors-semantic-background-btn-primary-enabled)] px-4 py-4 text-[16px] font-bold leading-none text-[var(--colors-semantic-text-btn-primary-text)] transition-colors hover:bg-[var(--colors-semantic-background-btn-primary-hover)] disabled:opacity-50"
-      >
+      <Button type="submit" isSubmitting={isSubmitting}>
         {buttonText}
-      </button>
+      </Button>
     </form>
   );
 };
