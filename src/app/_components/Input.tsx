@@ -2,27 +2,12 @@
 import { Eye, EyeOff } from 'lucide-react';
 import React, { useState } from 'react';
 import { FieldValues, Path, UseFormRegister } from 'react-hook-form';
-
-import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
-const inputVariants = cva(
-  'bg-gray-100 px-4 py-3 text-[16px] leading-normal text-[var(--colors-semantic-text-black)] placeholder:text-[var(--colors-semantic-text-placeholder)] focus:border-[var(--colors-semantic-border-focus)] focus:outline-none',
-  {
-    variants: {
-      size: {
-        default: 'w-full'
-      }
-    },
-    defaultVariants: {
-      size: 'default'
-    }
-  }
-);
-interface InputProps<T extends FieldValues>
-  extends
-    Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>,
-    VariantProps<typeof inputVariants> {
+const baseInputClass =
+  'bg-gray-100 w-full px-4 py-3 text-[16px] leading-normal text-[var(--colors-semantic-text-black)] placeholder:text-[var(--colors-semantic-text-placeholder)] focus:border-[var(--colors-semantic-border-focus)] focus:outline-none';
+
+interface InputProps<T extends FieldValues> extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
   type: string;
   placeholder?: string;
@@ -40,16 +25,15 @@ const Input = <T extends FieldValues>({
   placeholder,
   error,
   isSubmitting = false,
-  size,
   className
 }: InputProps<T>) => {
+  const inputClass = cn(baseInputClass, className);
   const [isShowPassword, setIsShowPassword] = useState(false);
   const isPassword = type === 'password';
   const passwordType = isShowPassword ? 'text' : 'password';
   const togglePasswordIcon = () => {
     setIsShowPassword((prev) => !prev);
   };
-
   return (
     <div>
       <label className="mb-2 block text-[14px] font-medium text-[var(--colors-semantic-text-default)]">
@@ -57,7 +41,7 @@ const Input = <T extends FieldValues>({
       </label>
       {!isPassword ? (
         <input
-          className={cn(inputVariants({ size, className }))}
+          className={inputClass}
           type={type}
           placeholder={placeholder}
           {...register(field)}
@@ -66,7 +50,7 @@ const Input = <T extends FieldValues>({
       ) : (
         <div className="relative">
           <input
-            className={cn(inputVariants({ size, className }))}
+            className={inputClass}
             type={passwordType}
             placeholder={placeholder}
             {...register(field)}
