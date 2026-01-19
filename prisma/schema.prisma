@@ -11,11 +11,17 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
+enum FollowStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
 model Profile {
   id                Int      @id @default(autoincrement())
   supabaseUserId    String   @unique
   userName          String   @unique
-  displayName       String
+  displayName       String?
   thumbnailImageUrl String?
   surfHistoryYears  Int?
   bio               String?
@@ -37,11 +43,11 @@ model Profile {
 }
 
 model Follow {
-  id                Int       @id @default(autoincrement())
+  id                Int           @id @default(autoincrement())
   followerProfileId Int
   followeeProfileId Int
-  status            String
-  requestedAt       DateTime  @default(now())
+  status            FollowStatus?
+  requestedAt       DateTime      @default(now())
   respondedAt       DateTime?
 
   followeeProfile Profile @relation("ProfileFollowers", fields: [followeeProfileId], references: [id])
