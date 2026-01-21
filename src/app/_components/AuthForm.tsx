@@ -1,33 +1,9 @@
 'use client';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
 import { AuthFormData } from '@/app/_types/auth';
-import Input from '@/app/_components/Input';
-import Button from '@/app/_components/Button';
-
-const signupSchema = z.object({
-  name: z.string().min(1, 'ユーザーネームは必須です'),
-  email: z
-    .string()
-    .min(1, 'メールアドレスは必須です')
-    .email({ message: '有効なメールアドレスを入力してください' }),
-  password: z
-    .string()
-    .min(1, 'パスワードは必須です')
-    .min(6, 'パスワードは6文字以上で入力してください')
-});
-
-const loginSchema = z.object({
-  email: z
-    .string()
-    .min(1, 'メールアドレスは必須です')
-    .email({ message: '有効なメールアドレスを入力してください' }),
-  password: z.string().min(1, 'パスワードは必須です')
-});
-
-type SignupFormData = z.infer<typeof signupSchema>;
-type LoginFormData = z.infer<typeof loginSchema>;
+import { Input, Button } from '@/components/ui';
+import { signupSchema, loginSchema, type SignupFormData, type LoginFormData } from '@/schemas/auth';
 
 interface AuthFormProps {
   onSubmit: (data: SignupFormData | LoginFormData) => void;
