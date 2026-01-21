@@ -6,7 +6,7 @@ import { Input, Button } from '@/components/ui';
 import { signupSchema, loginSchema, type SignupFormData, type LoginFormData } from '@/schemas/auth';
 
 interface AuthFormProps {
-  onSubmit: (data: SignupFormData | LoginFormData) => void;
+  onSubmit: (data: SignupFormData | LoginFormData, reset: () => void) => void;
   buttonText: string;
   isShowName?: boolean;
 }
@@ -15,12 +15,13 @@ const AuthForm: React.FC<AuthFormProps> = ({ onSubmit, buttonText, isShowName = 
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting }
+    formState: { errors, isSubmitting },
+    reset
   } = useForm<AuthFormData>({
     resolver: zodResolver(isShowName ? signupSchema : loginSchema)
   });
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="grid gap-6">
+    <form onSubmit={handleSubmit((data) => onSubmit(data, reset))} className="grid gap-6">
       {isShowName && (
         <div className="w-full">
           <Input
