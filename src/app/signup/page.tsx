@@ -33,13 +33,10 @@ export default function Signup() {
   return (
     <div className="mx-auto grid max-w-[480px] gap-8">
       <AuthForm key={reset} onSubmit={handleSubmit} buttonText="会員登録" />
-      <div className="text-center text-[14px] font-normal leading-[1.6] tracking-[0.21px] text-[var(--colors-semantic-text-gray)]">
+      <div className="text-center text-[14px] font-normal leading-[1.6] tracking-[0.21px] text-semantic-text-gray">
         もうアカウント持ってる？
         <br />
-        <Link
-          className="text-[var(--colors-semantic-text-primary)] underline hover:no-underline"
-          href="/login"
-        >
+        <Link className="text-semantic-text-primary underline hover:no-underline" href="/login">
           ログインはこちら
         </Link>
       </div>

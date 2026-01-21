@@ -7,7 +7,9 @@ import { cn } from '@/lib/utils';
 const baseInputClass =
   'bg-gray-100 w-full px-4 py-3 text-[16px] leading-normal text-[var(--colors-semantic-text-black)] placeholder:text-[var(--colors-semantic-text-placeholder)] focus:border-[var(--colors-semantic-border-focus)] focus:outline-none';
 
-interface InputProps<T extends FieldValues> extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps<
+  T extends FieldValues
+> extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
   type: string;
   placeholder?: string;
@@ -72,4 +74,4 @@ const Input = <T extends FieldValues>({
   );
 };
 
-export default Input;
+export { Input };
