@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { supabase } from '@/utils/supabase';
 import AuthForm from '@/app/_components/AuthForm';
-import { AuthFormData } from '@/app/_types/auth';
+import { AuthFormData } from '@/types/auth';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
 

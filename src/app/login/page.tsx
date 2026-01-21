@@ -1,7 +1,7 @@
 'use client';
 import { supabase } from '@/utils/supabase';
 import AuthForm from '@/app/_components/AuthForm';
-import { AuthFormData } from '@/app/_types/auth';
+import { AuthFormData } from '@/types/auth';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
