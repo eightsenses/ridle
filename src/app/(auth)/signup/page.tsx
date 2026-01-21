@@ -1,8 +1,8 @@
 'use client';
 import { useState } from 'react';
 import { supabase } from '@/utils/supabase';
-import AuthForm from '@/app/_components/AuthForm';
-import { AuthFormData } from '@/types/auth';
+import AuthForm from '@/app/(auth)/_components/AuthForm';
+import { AuthFormData } from '@/app/(auth)/_types/auth';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
 
