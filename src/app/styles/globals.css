@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import '@/app/styles/_tokens.css';
+
+:root {
+  --background: var(--colors-semantic-bg-default);
+  --foreground: var(--colors-semantic-text-default);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(
+      --colors-semantic-bg-default
+    ); /* _tokens.css 内の .dark が効くので同値でもOK */
+    --foreground: var(--colors-semantic-text-default);
+  }
+}
+
+.dark {
+  --background: var(--colors-semantic-bg-default);
+  --foreground: var(--colors-semantic-text-default);
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family:
+    var(--font-noto-sans-jp),
+    'Noto Sans',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
