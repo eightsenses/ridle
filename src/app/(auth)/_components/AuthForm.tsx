@@ -2,8 +2,8 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AuthFormData } from '@/app/(auth)/_types/auth';
-import { Input, Button } from '@/components/ui';
 import { signupSchema, loginSchema, type SignupFormData, type LoginFormData } from '@/schemas/auth';
+import { InputField, SubmitButton } from '@/app/_components/form';
 
 interface AuthFormProps {
   onSubmit: (data: SignupFormData | LoginFormData, reset: () => void) => void;
@@ -24,7 +24,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ onSubmit, buttonText, isShowName = 
     <form onSubmit={handleSubmit((data) => onSubmit(data, reset))} className="grid gap-6">
       {isShowName && (
         <div className="w-full">
-          <Input
+          <InputField
             label="ユーザーネーム"
             type="text"
             placeholder="ニックネームを入力"
@@ -36,7 +36,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ onSubmit, buttonText, isShowName = 
         </div>
       )}
       <div>
-        <Input
+        <InputField
           label="メールアドレス"
           type="email"
           placeholder="メールアドレス"
@@ -48,7 +48,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ onSubmit, buttonText, isShowName = 
       </div>
 
       <div>
-        <Input
+        <InputField
           label="パスワード"
           type="password"
           placeholder="パスワード"
@@ -59,9 +59,9 @@ const AuthForm: React.FC<AuthFormProps> = ({ onSubmit, buttonText, isShowName = 
         />
       </div>
 
-      <Button type="submit" isSubmitting={isSubmitting}>
+      <SubmitButton type="submit" isSubmitting={isSubmitting}>
         {buttonText}
-      </Button>
+      </SubmitButton>
     </form>
   );
 };
