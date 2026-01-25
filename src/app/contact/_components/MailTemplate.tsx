@@ -1,4 +1,4 @@
-import { ContactRequest } from '@/app/types/contact';
+import { ContactRequest } from '@/types/contact';
 import {
   Body,
   Container,
