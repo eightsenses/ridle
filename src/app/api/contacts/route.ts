@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import MailTemplate from '@/app/contact/_components/MailTemplate';
 import { createElement } from 'react';
-import { ContactRequest } from '@/app/types/contact';
+import { ContactRequest } from '@/types/contact';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const fromEmail = process.env.RESEND_FROM_EMAIL as string;

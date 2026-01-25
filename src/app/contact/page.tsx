@@ -1,6 +1,6 @@
 'use client';
 import ContactForm from '@/app/contact/_components/ContactForm';
-import { ContactRequest } from '@/app/types/contact';
+import { ContactRequest } from '@/types/contact';
 import React from 'react';
 import toast from 'react-hot-toast';
 
