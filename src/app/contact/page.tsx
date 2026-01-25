@@ -1,18 +1,13 @@
 'use client';
 import ContactForm from '@/app/contact/_components/ContactForm';
+import { ContactRequest } from '@/app/types/contact';
 import React from 'react';
 import toast from 'react-hot-toast';
 
-interface ContactFormData {
-  name: string;
-  email: string;
-  message: string;
-}
-
 export default function Contact() {
-  const handleSubmit = async (data: ContactFormData, reset: () => void) => {
+  const handleSubmit = async (data: ContactRequest, reset: () => void) => {
     try {
-      const res = await fetch('/api/send', {
+      const res = await fetch('/api/contacts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

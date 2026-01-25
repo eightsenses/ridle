@@ -1,3 +1,4 @@
+import { ContactRequest } from '@/app/types/contact';
 import {
   Body,
   Container,
@@ -11,8 +12,8 @@ import {
 import * as React from 'react';
 
 interface MailTemplateProps {
-  senderName: string;
-  content: string;
+  senderName: ContactRequest['name'];
+  content: ContactRequest['message'];
 }
 
 const MailTemplate = ({ senderName, content }: Readonly<MailTemplateProps>) => {

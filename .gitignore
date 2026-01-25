@@ -40,3 +40,6 @@ next-env.d.ts
 .vscode
 
 /src/generated/prisma
+
+# react-email（プレビュー確認用）
+/emails
