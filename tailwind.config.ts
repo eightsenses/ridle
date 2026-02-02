@@ -1,5 +1,138 @@
 import type { Config } from 'tailwindcss';
 
+// Define semantic tokens once, then reference them from friendly aliases.
+const semanticColors = {
+  background: {
+    black: 'var(--colors-semantic-background-black)',
+    default: 'var(--colors-semantic-background-default)',
+    white: 'var(--colors-semantic-background-white)',
+    thin: 'var(--colors-semantic-background-thin)',
+    subtle: 'var(--colors-semantic-background-subtle)',
+    gray: 'var(--colors-semantic-background-gray)',
+    primary: 'var(--colors-semantic-background-primary)',
+    secondary: 'var(--colors-semantic-background-scondary)',
+    dashboard: 'var(--colors-semantic-background-dashboard)',
+    star: 'var(--colors-semantic-background-star)',
+    opacity: {
+      default: 'var(--colors-semantic-background-opacity-default)',
+      heavy: 'var(--colors-semantic-background-opacity-heavy)',
+      middle: 'var(--colors-semantic-background-opacity-middle)',
+      thin: 'var(--colors-semantic-background-opacity-thin)'
+    },
+    btn: {
+      primary: {
+        enabled: 'var(--colors-semantic-background-btn-primary-enabled)',
+        hover: 'var(--colors-semantic-background-btn-primary-hover)',
+        disabled: 'var(--colors-semantic-background-btn-primary-disabled)'
+      },
+      secondary: {
+        enabled: 'var(--colors-semantic-background-btn-secondary-enabled)',
+        hover: 'var(--colors-semantic-background-btn-secondary-hover)',
+        disabled: 'var(--colors-semantic-background-btn-secondary-disabled)'
+      }
+    }
+  },
+  text: {
+    black: 'var(--colors-semantic-text-black)',
+    white: 'var(--colors-semantic-text-white)',
+    default: 'var(--colors-semantic-text-default)',
+    thin: 'var(--colors-semantic-text-thin)',
+    subtle: 'var(--colors-semantic-text-subtle)',
+    gray: 'var(--colors-semantic-text-gray)',
+    primary: 'var(--colors-semantic-text-primary)',
+    secondary: 'var(--colors-semantic-text-scondary)',
+    placeholder: 'var(--colors-semantic-text-placeholder)',
+    danger: 'var(--colors-semantic-text-danger)',
+    success: 'var(--colors-semantic-text-success)',
+    btn: {
+      primary: 'var(--colors-semantic-text-btn-primary-text)',
+      secondary: 'var(--colors-semantic-text-btn-scondary-text)',
+      brand: 'var(--colors-semantic-text-btn-brand-text)'
+    }
+  },
+  border: {
+    default: 'var(--colors-semantic-boder-default)',
+    heavy: 'var(--colors-semantic-boder-heavy)',
+    middle: 'var(--colors-semantic-boder-middle)',
+    thin: 'var(--colors-semantic-boder-thin)',
+    white: 'var(--colors-semantic-boder-white)',
+    btn: {
+      primary: 'var(--colors-semantic-boder-btn-primary-enabled)',
+      secondary: 'var(--colors-semantic-boder-btn-seconday-enabled)'
+    }
+  },
+  logo: {
+    main: 'var(--colors-semantic-logo-main)',
+    accent: 'var(--colors-semantic-logo-accent)',
+    white: 'var(--colors-semantic-logo-white)'
+  }
+} as const;
+
+// Optional "friendly" aliases (keep existing keys for backward-compat)
+const aliasColors = {
+  surface: {
+    DEFAULT: semanticColors.background.default,
+    subtle: semanticColors.background.subtle,
+    thin: semanticColors.background.thin,
+    dashboard: semanticColors.background.dashboard,
+    gray: semanticColors.background.gray,
+    primary: semanticColors.background.primary,
+    // keep the misspelled key for existing classnames
+    secondary: semanticColors.background.secondary,
+    star: semanticColors.background.star,
+    white: semanticColors.background.white,
+    black: semanticColors.background.black
+  },
+  ink: {
+    DEFAULT: semanticColors.text.default,
+    subtle: semanticColors.text.subtle,
+    muted: semanticColors.text.gray,
+    thin: semanticColors.text.thin,
+    primary: semanticColors.text.primary,
+    // keep the misspelled key for existing classnames
+    secondary: semanticColors.text.secondary,
+    danger: semanticColors.text.danger,
+    success: semanticColors.text.success,
+    placeholder: semanticColors.text.placeholder,
+    white: semanticColors.text.white,
+    black: semanticColors.text.black
+  },
+  line: {
+    DEFAULT: semanticColors.border.default,
+    subtle: semanticColors.border.thin,
+    mid: semanticColors.border.middle,
+    strong: semanticColors.border.heavy,
+    white: semanticColors.border.white
+  },
+  brand: {
+    DEFAULT: semanticColors.background.primary,
+    soft: semanticColors.background.secondary
+  },
+  btn: {
+    primary: {
+      DEFAULT: semanticColors.background.btn.primary.enabled,
+      hover: semanticColors.background.btn.primary.hover,
+      disabled: semanticColors.background.btn.primary.disabled
+    },
+    secondary: {
+      DEFAULT: semanticColors.background.btn.secondary.enabled,
+      hover: semanticColors.background.btn.secondary.hover,
+      disabled: semanticColors.background.btn.secondary.disabled
+    },
+    text: {
+      primary: semanticColors.text.btn.primary,
+      // keep the misspelled key for existing classnames
+      secondary: semanticColors.text.btn.secondary,
+      brand: semanticColors.text.btn.brand
+    }
+  },
+  logo: {
+    main: semanticColors.logo.main,
+    accent: semanticColors.logo.accent,
+    white: semanticColors.logo.white
+  }
+} as const;
+
 const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -12,73 +145,12 @@ const config: Config = {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
-        // Semantic colors from _tokens.css
-        semantic: {
-          background: {
-            black: 'var(--colors-semantic-background-black)',
-            default: 'var(--colors-semantic-background-default)',
-            white: 'var(--colors-semantic-background-white)',
-            thin: 'var(--colors-semantic-background-thin)',
-            subtle: 'var(--colors-semantic-background-subtle)',
-            gray: 'var(--colors-semantic-background-gray)',
-            primary: 'var(--colors-semantic-background-primary)',
-            secondary: 'var(--colors-semantic-background-scondary)',
-            dashboard: 'var(--colors-semantic-background-dashboard)',
-            star: 'var(--colors-semantic-background-star)',
-            opacity: {
-              default: 'var(--colors-semantic-background-opacity-default)',
-              heavy: 'var(--colors-semantic-background-opacity-heavy)',
-              middle: 'var(--colors-semantic-background-opacity-middle)',
-              thin: 'var(--colors-semantic-background-opacity-thin)'
-            },
-            btn: {
-              primary: {
-                enabled: 'var(--colors-semantic-background-btn-primary-enabled)',
-                hover: 'var(--colors-semantic-background-btn-primary-hover)',
-                disabled: 'var(--colors-semantic-background-btn-primary-disabled)'
-              },
-              secondary: {
-                enabled: 'var(--colors-semantic-background-btn-secondary-enabled)',
-                hover: 'var(--colors-semantic-background-btn-secondary-hover)',
-                disabled: 'var(--colors-semantic-background-btn-secondary-disabled)'
-              }
-            }
-          },
-          text: {
-            black: 'var(--colors-semantic-text-black)',
-            white: 'var(--colors-semantic-text-white)',
-            default: 'var(--colors-semantic-text-default)',
-            thin: 'var(--colors-semantic-text-thin)',
-            subtle: 'var(--colors-semantic-text-subtle)',
-            gray: 'var(--colors-semantic-text-gray)',
-            primary: 'var(--colors-semantic-text-primary)',
-            secondary: 'var(--colors-semantic-text-scondary)',
-            placeholder: 'var(--colors-semantic-text-placeholder)',
-            danger: 'var(--colors-semantic-text-danger)',
-            success: 'var(--colors-semantic-text-success)',
-            btn: {
-              primary: 'var(--colors-semantic-text-btn-primary-text)',
-              secondary: 'var(--colors-semantic-text-btn-scondary-text)',
-              brand: 'var(--colors-semantic-text-btn-brand-text)'
-            }
-          },
-          border: {
-            default: 'var(--colors-semantic-boder-default)',
-            heavy: 'var(--colors-semantic-boder-heavy)',
-            middle: 'var(--colors-semantic-boder-middle)',
-            thin: 'var(--colors-semantic-boder-thin)',
-            white: 'var(--colors-semantic-boder-white)',
-            btn: {
-              primary: 'var(--colors-semantic-boder-btn-primary-enabled)',
-              secondary: 'var(--colors-semantic-boder-btn-seconday-enabled)'
-            }
-          },
-          logo: {
-            main: 'var(--colors-semantic-logo-main)',
-            accent: 'var(--colors-semantic-logo-accent)',
-            white: 'var(--colors-semantic-logo-white)'
-          }
-        }
+
+        // Friendly aliases (derived from semantic tokens)
+        ...aliasColors,
+
+        // Semantic colors from _tokens.css (single source of truth)
+        semantic: semanticColors
       },
       spacing: {
         '4xs': 'var(--space-semantic-4xs)',
@@ -120,10 +192,10 @@ const config: Config = {
         '70': 'var(--opacity-semantic-70)',
         '100': 'var(--opacity-semantic-100)'
       },
-      fontFamily: {
-        noto: ['var(--font-noto-sans-jp)', 'Noto Sans', 'sans-serif'],
-        bebas: ['Bebas Neue', 'cursive']
-      },
+      // fontFamily: {
+      //   noto: ['var(--font-noto-sans-jp)', 'Noto Sans', 'sans-serif'],
+      //   bebas: ['var(--font-bebas-neue)', 'Bebas Neue', 'cursive']
+      // },
       fontSize: {
         // Japanese text sizes
         'jp-text-xs': [
