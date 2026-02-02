@@ -27,8 +27,8 @@ export default function Contact() {
   };
 
   return (
-    <div className="mx-auto grid max-w-[480px] gap-8">
+    <section className="mx-auto grid w-full max-w-[480px] gap-8">
       <ContactForm onSubmit={handleSubmit} buttonText="送信" />
-    </div>
+    </section>
   );
 }

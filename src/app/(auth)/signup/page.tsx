@@ -1,9 +1,11 @@
 'use client';
 import { supabase } from '@/utils/supabase';
 import AuthForm from '@/app/(auth)/_components/AuthForm';
+import AuthTextLink from '@/app/(auth)/_components/AuthTextLink';
 import { AuthFormData } from '@/app/(auth)/_types/auth';
-import Link from 'next/link';
 import toast from 'react-hot-toast';
+import Logo from '@/assets/svg/logo.svg';
+import Link from 'next/link';
 
 export default function Signup() {
   const handleSubmit = async (data: AuthFormData, reset: () => void) => {
@@ -28,15 +30,25 @@ export default function Signup() {
   };
 
   return (
-    <div className="mx-auto grid max-w-[480px] gap-8">
-      <AuthForm onSubmit={handleSubmit} buttonText="会員登録" />
-      <div className="text-center text-[14px] font-normal leading-[1.6] tracking-[0.21px] text-semantic-text-gray">
-        もうアカウント持ってる？
-        <br />
-        <Link className="text-semantic-text-primary underline hover:no-underline" href="/login">
-          ログインはこちら
-        </Link>
+    <section className="grid min-h-screen grid-cols-1 md:grid-cols-[4fr_6fr]">
+      <div className="relative hidden bg-[url('/images/signup-bg.webp')] bg-cover bg-center md:block">
+        <div className="absolute inset-0 bg-black/5" />
       </div>
-    </div>
+      <div className="flex flex-col items-center justify-center p-6">
+        <div className="grid w-full max-w-[480px] gap-8">
+          <div className="mx-auto w-[130px] lg:w-[160px]">
+            <Link href="/" className="text-center">
+              <Logo className="w-full" />
+            </Link>
+          </div>
+          <AuthForm onSubmit={handleSubmit} buttonText="会員登録" />
+          <div className="text-center text-[14px] font-normal leading-[1.6] tracking-[0.21px] text-semantic-text-gray">
+            もうアカウント持ってる？
+            <br />
+            <AuthTextLink href={'/login'}>ログインはこちら</AuthTextLink>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

@@ -2,6 +2,7 @@
 import { supabase } from '@/utils/supabase';
 import AuthForm from '@/app/(auth)/_components/AuthForm';
 import { AuthFormData } from '@/app/(auth)/_types/auth';
+import AuthTextLink from '@/app/(auth)/_components/AuthTextLink';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
@@ -49,8 +50,11 @@ export default function Login() {
   };
 
   return (
-    <div className="mx-auto grid max-w-[480px]">
+    <section className="mx-auto grid w-full max-w-[480px] gap-8">
       <AuthForm onSubmit={handleSubmit} buttonText="ログイン" isShowName={false} />
-    </div>
+      <div className="text-center text-[14px] font-normal leading-[1.6] tracking-[0.21px] text-semantic-text-gray">
+        <AuthTextLink href={'/'}>パスワードを忘れた方はこちら</AuthTextLink>
+      </div>
+    </section>
   );
 }
