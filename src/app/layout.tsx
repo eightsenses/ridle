@@ -1,14 +1,9 @@
 import type { Metadata } from 'next';
-import { Noto_Sans_JP } from 'next/font/google';
 import '@/app/styles/globals.css';
+import { notoSansJP, bebasNeue, roboto } from '@/app/styles/fonts';
+import LayoutWrapper from '@/app/_components/LayoutWrapper';
 import { Toaster } from 'react-hot-toast';
-
-const notoSansJP = Noto_Sans_JP({
-  weight: ['400', '700'],
-  subsets: ['latin'],
-  variable: '--font-noto-sans-jp',
-  display: 'swap'
-});
+import { ThemeProvider } from '@/components/theme-provider';
 
 export const metadata: Metadata = {
   title: 'Ridle - サーフィン記録アプリ',
@@ -21,10 +16,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
-      <body className={`${notoSansJP.variable} antialiased`}>
-        {children}
-        <Toaster position="top-right" />
+    <html lang="ja" suppressHydrationWarning>
+      <body
+        className={`${notoSansJP.variable} ${bebasNeue.variable} ${roboto.variable} flex min-h-screen flex-col antialiased`}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <LayoutWrapper>{children}</LayoutWrapper>
+          <Toaster position="top-right" />
+        </ThemeProvider>
       </body>
     </html>
   );
