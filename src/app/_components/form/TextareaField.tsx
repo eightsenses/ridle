@@ -26,7 +26,7 @@ const TextareaField = <T extends FieldValues>({
     <div>
       <Label>{label}</Label>
       <Textarea placeholder={placeholder} {...register(field)} disabled={isSubmitting} />
-      {error && <p className="mt-1 text-[14px] text-red-700">{error}</p>}
+      {error && <p className="mt-1 text-[14px] text-red-500">{error}</p>}
     </div>
   );
 };

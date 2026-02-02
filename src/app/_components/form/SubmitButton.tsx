@@ -9,7 +9,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 
 const SubmitButton = ({ children, isSubmitting = false, ...Props }: ButtonProps) => {
   return (
-    <Button disabled={isSubmitting} {...Props}>
+    <Button size="md" disabled={isSubmitting} {...Props}>
       {children}
     </Button>
   );
