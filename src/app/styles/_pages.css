@@ -1,6 +1,6 @@
 body:has(.home) .main {
   @apply p-0;
 }
-.main.signup {
+.main.login {
   @apply pt-0;
 }

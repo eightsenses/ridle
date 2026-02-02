@@ -7,14 +7,14 @@ import ModeToggle from '@/app/_components/ModeToggle';
 
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const isSignup = pathname === '/signup';
+  const isLogin = pathname === '/login';
 
-  return isSignup ? (
+  return isLogin ? (
     <>
       <div className="fixed left-3 top-4 z-[9999] md:left-8">
         <ModeToggle />
       </div>
-      <main className="main signup">{children}</main>
+      <main className="main login">{children}</main>
     </>
   ) : (
     <>
