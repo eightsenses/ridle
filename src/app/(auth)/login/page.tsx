@@ -7,6 +7,8 @@ import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import Logo from '@/assets/svg/logo.svg';
 import Link from 'next/link';
+import Image from 'next/image';
+import LoginBg from '@/assets/images/login-bg.jpg';
 
 export default function Login() {
   const router = useRouter();
@@ -53,8 +55,9 @@ export default function Login() {
 
   return (
     <section className="grid min-h-screen grid-cols-1 md:grid-cols-[4fr_6fr]">
-      <div className="relative hidden bg-[url('/images/signup-bg.webp')] bg-cover bg-center md:block">
+      <div className="relative hidden md:block">
         <div className="absolute inset-0 bg-black/5" />
+        <Image src={LoginBg} alt="ログイン背景画像" fill priority className="-z-10 object-cover" />
       </div>
       <div className="flex flex-col items-center justify-center p-6">
         <div className="grid w-full max-w-[480px] gap-8">

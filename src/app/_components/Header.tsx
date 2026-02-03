@@ -1,33 +1,14 @@
 'use client';
-import { useEffect, useRef } from 'react';
 import ModeToggle from '@/app/_components/ModeToggle';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Logo from '@/assets/svg/logo.svg';
 
 const Header: React.FC = () => {
-  const headerRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const headerHeight = () => {
-      if (headerRef.current) {
-        const height = headerRef.current.offsetHeight;
-        document.documentElement.style.setProperty('--header-height', `${height}px`);
-      }
-    };
-    const resizeObserver = new ResizeObserver(headerHeight);
-    if (headerRef.current) {
-      headerHeight();
-      resizeObserver.observe(headerRef.current);
-    }
-
-    return () => resizeObserver.disconnect();
-  }, []);
-
   return (
-    <header ref={headerRef} className="fixed left-0 top-0 z-[9999px] w-full">
+    <header className="sticky left-0 top-0 z-[9999px] w-full">
       <section className="relative py-4 md:py-4">
-        <div className="absolute left-3 top-1/2 grid w-fit -translate-y-1/2 items-center md:left-8">
+        <div className="absolute left-4 top-1/2 grid w-fit -translate-y-1/2 items-center md:left-8">
           <ModeToggle />
         </div>
         <div className="mx-auto w-[130px] lg:w-[160px]">

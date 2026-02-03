@@ -11,7 +11,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
 
   return isLogin ? (
     <>
-      <div className="fixed left-3 top-4 z-[9999] md:left-8">
+      <div className="fixed left-4 top-7 z-[9999] md:left-8 md:top-[35px]">
         <ModeToggle />
       </div>
       <main className="main login">{children}</main>
