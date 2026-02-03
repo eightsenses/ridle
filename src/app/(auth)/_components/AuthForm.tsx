@@ -21,7 +21,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ onSubmit, buttonText, isShowName = 
     resolver: zodResolver(isShowName ? signupSchema : loginSchema)
   });
   return (
-    <form onSubmit={handleSubmit((data) => onSubmit(data, reset))} className="grid gap-6">
+    <form onSubmit={handleSubmit((data) => onSubmit(data, reset))} className="grid w-full gap-6">
       {isShowName && (
         <div className="w-full">
           <InputField

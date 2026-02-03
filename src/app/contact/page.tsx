@@ -3,6 +3,7 @@ import ContactForm from '@/app/contact/_components/ContactForm';
 import { ContactRequest } from '@/types/contact';
 import React from 'react';
 import toast from 'react-hot-toast';
+import PageHeader from '@/app/_components/PageHeader';
 
 export default function Contact() {
   const handleSubmit = async (data: ContactRequest, reset: () => void) => {
@@ -27,8 +28,12 @@ export default function Contact() {
   };
 
   return (
-    <div className="mx-auto grid max-w-[480px] gap-8">
+    <section className="mx-auto grid w-full max-w-[480px] gap-8">
+      <PageHeader
+        title="お問い合わせ"
+        text="ご質問・ご意見がありましたら、こちらからお問い合わせください"
+      />
       <ContactForm onSubmit={handleSubmit} buttonText="送信" />
-    </div>
+    </section>
   );
 }

@@ -5,19 +5,25 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-  'mx-auto rounded-full px-4 py-4 text-[16px] font-bold transition-colors disabled:bg-[var(--colors-semantic-background-btn-primary-disabled)] disabled:text-[var(--colors-semantic-text-btn-primary-text)]',
+  'mx-auto rounded-full px-4 py-4 text-[16px] font-bold transition-colors disabled:bg-[var(--colors-semantic-background-btn-primary-disabled)] disabled:text-semantic-text-btn-primary',
   {
     variants: {
       variant: {
         default:
-          'bg-[var(--colors-semantic-background-btn-primary-enabled)] text-[var(--colors-semantic-text-btn-primary-text)] hover:bg-[var(--colors-semantic-background-btn-primary-hover)]',
-        outline: '',
-        secondary: ''
+          'bg-semantic-background-primary text-semantic-text-btn-primary transition-colors duration-300 hover:bg-btn-primary-hover',
+        secondary:
+          'bg-btn-secondary text-semantic-text-btn-secondary transition-colors duration-300 hover:bg-semantic-background-btn-secondary-hover',
+
+        outline:
+          'border border-semantic-border-default bg-btn-secondary text-semantic-text-btn-secondary transition-colors duration-300 hover:bg-semantic-background-btn-secondary-hover',
+        modeOn: 'pointer-events-none bg-semantic-background-primary text-semantic-text-btn-primary',
+        modeOff: 'text-semantic-btn-secondary'
       },
       size: {
-        default: 'w-[180px]',
-        sm: 'w-full',
-        lg: ''
+        default: 'w-full',
+        sm: 'w-[140px]',
+        md: 'w-[180px]',
+        lg: 'w-[320px]'
       }
     },
     defaultVariants: {
