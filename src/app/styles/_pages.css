@@ -1,0 +1,3 @@
+body:has(.home) header {
+  @apply fixed;
+}

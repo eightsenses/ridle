@@ -56,7 +56,7 @@ const InputField = <T extends FieldValues>({
           </button>
         </div>
       )}
-      {error && <p className="mt-1 text-[14px] text-red-700">{error}</p>}
+      {error && <p className="mt-1 text-[14px] text-red-500">{error}</p>}
     </div>
   );
 };

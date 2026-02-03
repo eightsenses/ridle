@@ -1,9 +1,10 @@
 'use client';
 import { supabase } from '@/utils/supabase';
 import AuthForm from '@/app/(auth)/_components/AuthForm';
+import AuthTextLink from '@/app/(auth)/_components/AuthTextLink';
 import { AuthFormData } from '@/app/(auth)/_types/auth';
-import Link from 'next/link';
 import toast from 'react-hot-toast';
+import PageHeader from '@/app/_components/PageHeader';
 
 export default function Signup() {
   const handleSubmit = async (data: AuthFormData, reset: () => void) => {
@@ -28,15 +29,14 @@ export default function Signup() {
   };
 
   return (
-    <div className="mx-auto grid max-w-[480px] gap-8">
+    <section className="mx-auto grid w-full max-w-[480px] gap-8">
+      <PageHeader title="会員登録" text="今日の波も、自分の成長も記録！かんたん・無料で始めよう" />
       <AuthForm onSubmit={handleSubmit} buttonText="会員登録" />
       <div className="text-center text-[14px] font-normal leading-[1.6] tracking-[0.21px] text-semantic-text-gray">
         もうアカウント持ってる？
         <br />
-        <Link className="text-semantic-text-primary underline hover:no-underline" href="/login">
-          ログインはこちら
-        </Link>
+        <AuthTextLink href={'/login'}>ログインはこちら</AuthTextLink>
       </div>
-    </div>
+    </section>
   );
 }
