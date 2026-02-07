@@ -37,7 +37,7 @@
     "no-orphaned-end-tag": true,
     "no-refer-to-non-existent-id": true,
     "no-use-event-handler-attr": false,
-    "permitted-contents": [],
+    "permitted-contents": false,
     "placeholder-label-option": true,
     "require-accessible-name": true,
     "require-datetime": true,
