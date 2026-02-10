@@ -1,11 +1,10 @@
 'use client';
-
+import { ComponentProps, FC } from 'react';
 import Link from 'next/link';
-import { ComponentProps } from 'react';
 
 type Props = ComponentProps<typeof Link>;
 
-const AuthTextLink: React.FC<Props> = ({ className = '', ...props }) => {
+const AuthTextLink: FC<Props> = ({ className = '', ...props }) => {
   return <Link {...props} className={`text-semantic-text-primary hover:underline ${className}`} />;
 };
 export default AuthTextLink;

@@ -1,13 +1,12 @@
 'use client';
-import React, { ReactNode } from 'react';
+import { FC } from 'react';
 import { Button } from '@/components/ui/button';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: ReactNode;
   isSubmitting?: boolean;
 }
 
-const SubmitButton = ({ children, isSubmitting = false, ...Props }: ButtonProps) => {
+const SubmitButton: FC<ButtonProps> = ({ children, isSubmitting = false, ...Props }) => {
   return (
     <Button size="md" disabled={isSubmitting} {...Props}>
       {children}

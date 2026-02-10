@@ -1,22 +1,23 @@
 'use client';
+import { FC } from 'react';
 import ModeToggle from '@/app/_components/ModeToggle';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Logo from '@/assets/svg/logo.svg';
 
-const Header: React.FC = () => {
+const Header: FC = () => {
   return (
-    <header className="sticky left-0 top-0 z-[9999px] w-full">
-      <section className="relative py-4 md:py-4">
-        <div className="absolute left-4 top-1/2 grid w-fit -translate-y-1/2 items-center md:left-8">
+    <header className="sticky left-0 top-0 z-[9999] w-full">
+      <section className="relative mx-4 py-4 md:mx-8">
+        <div className="absolute top-1/2 grid w-fit -translate-y-1/2 items-center">
           <ModeToggle />
         </div>
-        <div className="mx-auto w-[130px] lg:w-[160px]">
+        <div className="mx-auto w-[110px] lg:w-[160px]">
           <Link href="/" className="text-center">
             <Logo className="w-full" />
           </Link>
         </div>
-        <div className="fixed flex items-center max-md:bottom-0 max-md:w-full md:absolute md:right-8 md:top-1/2 md:shrink-0 md:-translate-y-1/2 md:gap-4">
+        <div className="fixed right-0 flex w-screen items-center max-md:bottom-0 max-md:w-full md:absolute md:top-1/2 md:w-fit md:shrink-0 md:-translate-y-1/2 md:gap-4">
           <Button asChild size="sm" className="py-3 text-center max-md:w-1/2 max-md:rounded-none">
             <Link href="/signup">新規登録</Link>
           </Button>
