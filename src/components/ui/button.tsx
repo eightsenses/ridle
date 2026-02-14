@@ -5,14 +5,14 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-  'mx-auto rounded-full px-4 py-4 text-[16px] font-bold transition-colors disabled:bg-[var(--colors-semantic-background-btn-primary-disabled)] disabled:text-semantic-text-btn-primary',
+  'mx-auto rounded-full px-4 py-4 text-[16px] font-bold transition-colors',
   {
     variants: {
       variant: {
         default:
-          'bg-semantic-background-primary text-semantic-text-btn-primary transition-colors duration-300 hover:bg-btn-primary-hover',
+          'bg-semantic-background-primary text-semantic-text-btn-primary transition-colors duration-300 hover:bg-btn-primary-hover disabled:bg-semantic-background-btn-primary-disabled disabled:text-semantic-text-btn-primary',
         secondary:
-          'bg-btn-secondary text-semantic-text-btn-secondary transition-colors duration-300 hover:bg-semantic-background-btn-secondary-hover',
+          'bg-btn-secondary text-semantic-text-btn-secondary transition-colors duration-300 hover:bg-semantic-background-btn-secondary-hover disabled:bg-semantic-background-btn-secondary-disabled disabled:text-semantic-text-btn-secondary',
 
         outline:
           'border border-semantic-border-default bg-btn-secondary text-semantic-text-btn-secondary transition-colors duration-300 hover:bg-semantic-background-btn-secondary-hover',
