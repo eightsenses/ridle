@@ -1,3 +1,24 @@
 body:has(.home) header {
   @apply fixed;
 }
+
+body:has(.home) main {
+  @apply px-0;
+}
+
+.is-animated > * {
+  opacity: 0;
+}
+.is-animate-x {
+  animation: wave-loop-x 25.5s linear infinite;
+  will-change: transform;
+}
+
+.is-animate-y {
+  animation: wave-loop-y 3.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* body:has(.home) header > section {
+  @apply border-b border-b-[var(--colors-semantic-border-thin)];
+} */

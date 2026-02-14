@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import '@/app/styles/_tokens.css';
+@import '@/app/styles/_animations.css';
 @import '@/app/styles/_pages.css';
 
 :root {
@@ -35,10 +36,4 @@ body {
 
 @utility text-balance {
   text-wrap: balance;
-}
-
-@layer components {
-  .main {
-    @apply pt-[var(--header-height)];
-  }
 }
