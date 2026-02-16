@@ -5,7 +5,8 @@ import FriendIcon from '@/assets/svg/friend-icon.svg';
 import AreaIcon from '@/assets/svg/area-icon.svg';
 import SessionIcon from '@/assets/svg/session-icon.svg';
 import SpotIcon from '@/assets/svg/wave-icon.svg';
-import { FeatureCardProps, FeatureSubCardProps } from '@/types/home';
+import { FeatureCardProps } from '@/app/(home)/_components/FeatureCard';
+import { FeatureSubCardProps } from '@/app/(home)/_components/FeatureSubCard';
 
 export const FEATURE_ITEMS: FeatureCardProps[] = [
   {

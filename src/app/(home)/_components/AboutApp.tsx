@@ -2,10 +2,18 @@
 import { FC } from 'react';
 import Image from 'next/image';
 import LogoJp from '@/assets/svg/logo-jp.svg';
-import { AboutAppProps } from '@/types/home';
-import CtaButton from '@/app/_components/home/CtaButton';
+import { CtaBase } from '@/app/(home)/_types/home';
+import CtaButton from '@/app/(home)/_components/CtaButton';
 import FadeUp from '@/app/_components/motions/FadeUpMotion';
 import Parallax from '@/app/_components/motions/Parallax';
+import { StaticImageData } from 'next/image';
+
+interface AboutAppProps extends CtaBase {
+  title: string;
+  caption: string;
+  imageLight: StaticImageData;
+  imageDark: StaticImageData;
+}
 
 const AboutApp: FC<AboutAppProps> = ({
   title,
@@ -30,6 +38,7 @@ const AboutApp: FC<AboutAppProps> = ({
               {buttonHref && buttonLabel && <CtaButton href={buttonHref} label={buttonLabel} />}
             </div>
           </FadeUp>
+
           <div className="max-xl:flex max-xl:justify-center max-xl:gap-5">
             <Parallax
               y={130}

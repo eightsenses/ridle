@@ -2,8 +2,13 @@
 import { FC } from 'react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { CtaButtonProps } from '@/types/home';
 import { twMerge } from 'tailwind-merge';
+
+interface CtaButtonProps {
+  label: string;
+  href: string;
+  className?: string;
+}
 
 const CtaButton: FC<CtaButtonProps> = ({ label, href, className }) => {
   return (

@@ -38,9 +38,9 @@ const SurferMotion: FC<SurferMotionProps> = ({ children, className }) => {
         );
 
         const floatSettings = [
-          { x: 5, y: -50, rotation: -10 },
-          { x: -8, y: -30, rotation: 15 },
-          { x: 6, y: -50, rotation: 8 }
+          { x: 10, y: -80, rotation: -10 },
+          { x: -15, y: -30, rotation: 15 },
+          { x: 0, y: -70, rotation: 10 }
         ];
         const config = floatSettings[i] || floatSettings[0];
 

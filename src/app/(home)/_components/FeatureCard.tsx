@@ -1,7 +1,11 @@
 'use client';
 import { FC } from 'react';
-import Image from 'next/image';
-import { FeatureCardProps } from '@/types/home';
+import Image, { StaticImageData } from 'next/image';
+import { FeatureBase } from '@/app/(home)/_types/home';
+
+export interface FeatureCardProps extends FeatureBase {
+  imageSrc: StaticImageData;
+}
 
 const FeatureCard: FC<FeatureCardProps> = ({ imageSrc, icon: Icon, title, text }) => {
   return (

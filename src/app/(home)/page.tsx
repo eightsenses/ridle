@@ -1,9 +1,9 @@
 'use client';
-import AboutApp from '@/app/_components/home/AboutApp';
-import Concept from '@/app/_components/home/Concept';
-import Features from '@/app/_components/home/Features';
-import HeroVisual from '@/app/_components/home/HeroVisual';
-import Wave from '@/app/_components/home/Wave';
+import AboutApp from '@/app/(home)/_components/AboutApp';
+import Concept from '@/app/(home)/_components/Concept';
+import Features from '@/app/(home)/_components/Features';
+import HeroVisual from '@/app/(home)/_components/HeroVisual';
+import Wave from '@/app/(home)/_components/Wave';
 import HeroImagePc from '@/assets/images/home/hero@pc.jpg';
 import HeroImageSp from '@/assets/images/home/hero@sp.jpg';
 import MocImageLight from '@/assets/images/home/device@light.png';

@@ -1,6 +1,10 @@
 'use client';
 import { FC } from 'react';
-import { FeatureSubCardProps } from '@/types/home';
+import { FeatureBase } from '@/app/(home)/_types/home';
+
+export interface FeatureSubCardProps extends FeatureBase {
+  subtitle: string;
+}
 
 const FeatureSubCard: FC<FeatureSubCardProps> = ({ icon: Icon, title, subtitle, text }) => {
   return (

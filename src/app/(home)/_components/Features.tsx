@@ -1,18 +1,18 @@
 'use client';
 import React, { FC } from 'react';
-import FeatureCard from '@/app/_components/home/FeatureCard';
-import FeatureSubCard from '@/app/_components/home/FeatureSubCard';
+import FeatureCard from '@/app/(home)/_components/FeatureCard';
+import FeatureSubCard from '@/app/(home)/_components/FeatureSubCard';
 import Surfer01 from '@/assets/svg/surfer-1.svg';
 import Surfer02 from '@/assets/svg/surfer-2.svg';
 import Surfer03 from '@/assets/svg/surfer-3.svg';
-import CtaButton from '@/app/_components/home/CtaButton';
-import { FeaturesProps } from '@/types/home';
-import { FEATURE_ITEMS, FEATURE_SUB_ITEMS } from '@/app/_components/home/data/features.data';
+import CtaButton from '@/app/(home)/_components/CtaButton';
+import { CtaBase } from '@/app/(home)/_types/home';
+import { FEATURE_ITEMS, FEATURE_SUB_ITEMS } from '@/app/(home)/_data/features.data';
 import SurferMotion from '@/app/_components/motions/SurferMotion';
 import FadeUp from '@/app/_components/motions/FadeUpMotion';
 import TextMotion from '@/app/_components/motions/TextMotion';
 
-const Features: FC<FeaturesProps> = ({ buttonHref, buttonLabel }) => {
+const Features: FC<CtaBase> = ({ buttonHref, buttonLabel }) => {
   return (
     <section className="mx-auto max-w-6xl px-6">
       <div className="flex gap-12 max-md:flex-col-reverse">
@@ -34,7 +34,7 @@ const Features: FC<FeaturesProps> = ({ buttonHref, buttonLabel }) => {
           と築く成長
         </h2>
         <SurferMotion className="flex justify-center gap-5">
-          <Surfer01 className="surfer h-auto w-full max-w-44 fill-current will-change-transform" />
+          <Surfer01 className="surfer h-auto w-full max-w-48 fill-current will-change-transform" />
           <Surfer02 className="surfer h-auto w-full max-w-24 fill-current will-change-transform" />
           <Surfer03 className="surfer h-auto w-full max-w-16 fill-current will-change-transform" />
         </SurferMotion>

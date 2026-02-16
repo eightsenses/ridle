@@ -1,8 +1,13 @@
 'use client';
-import { FC } from 'react';
-import { ConceptProps } from '@/types/home';
-import Image from 'next/image';
+import { ReactNode, FC } from 'react';
+import Image, { StaticImageData } from 'next/image';
 import FadeUp from '@/app/_components/motions/FadeUpMotion';
+
+interface ConceptProps {
+  title: ReactNode;
+  texts: string[];
+  imageBg: StaticImageData;
+}
 
 const Concept: FC<ConceptProps> = ({ title, texts, imageBg }) => {
   return (
