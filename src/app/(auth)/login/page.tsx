@@ -71,7 +71,7 @@ export default function Login() {
           </div>
           <AuthForm onSubmit={handleSubmit} buttonText="ログイン" isShowName={false} />
           <div className="text-center text-[14px] font-normal leading-[1.6] tracking-[0.21px] text-semantic-text-gray">
-            <AuthTextLink href={'/'}>パスワードを忘れた方はこちら</AuthTextLink>
+            <AuthTextLink href={'/forgot-password'}>パスワードを忘れた方はこちら</AuthTextLink>
           </div>
         </div>
       </div>
