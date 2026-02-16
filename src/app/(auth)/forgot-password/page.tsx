@@ -54,7 +54,7 @@ export default function ForgotPassword() {
         </SubmitButton>
       </form>
       <div className="text-center text-sm font-normal leading-[1.6] tracking-[0.21px] text-semantic-text-gray">
-        <AuthTextLink href="/login">ログイン画面に戻る</AuthTextLink>
+        <AuthTextLink href="/login">ログインに戻る</AuthTextLink>
       </div>
     </section>
   );
