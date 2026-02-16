@@ -1,4 +1,5 @@
 'use client';
+import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AuthFormData } from '@/app/(auth)/_types/auth';
@@ -11,7 +12,7 @@ interface AuthFormProps {
   isShowName?: boolean;
 }
 
-const AuthForm: React.FC<AuthFormProps> = ({ onSubmit, buttonText, isShowName = true }) => {
+const AuthForm: FC<AuthFormProps> = ({ onSubmit, buttonText, isShowName = true }) => {
   const {
     register,
     handleSubmit,

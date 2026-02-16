@@ -192,10 +192,10 @@ const config: Config = {
         '70': 'var(--opacity-semantic-70)',
         '100': 'var(--opacity-semantic-100)'
       },
-      // fontFamily: {
-      //   noto: ['var(--font-noto-sans-jp)', 'Noto Sans', 'sans-serif'],
-      //   bebas: ['var(--font-bebas-neue)', 'Bebas Neue', 'cursive']
-      // },
+      fontFamily: {
+        noto: ['var(--font-noto-sans-jp)', 'Noto Sans', 'sans-serif'],
+        bebas: ['var(--font-bebas-neue)', 'Bebas Neue', 'cursive']
+      },
       fontSize: {
         // Japanese text sizes
         'jp-text-xs': [
