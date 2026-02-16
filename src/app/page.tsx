@@ -18,8 +18,8 @@ export default function Home() {
       <HeroVisual
         heading={
           <>
-            <TextMotion className="grid w-fit">Ride Your Wave</TextMotion>
-            <TextMotion className="mt-2 grid w-fit" delay={0.2}>
+            <TextMotion className="grid w-fit max-md:mx-auto">Ride Your Wave</TextMotion>
+            <TextMotion className="mt-2 grid w-fit max-md:mx-auto" delay={0.2}>
               Live the Story
             </TextMotion>
           </>

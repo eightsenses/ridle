@@ -33,7 +33,7 @@ const HeroVisual: FC<HeroVisualProps> = ({ heading, subtitle, imagePc, imageSp }
         <img {...rest} alt="Ridle" />
       </picture>
       <div className="relative mt-[calc(110px+3vw)] grid gap-2 max-md:text-center md:ml-16">
-        <h1 className="relative items-center overflow-hidden font-bebas text-[clamp(4.4rem,12vw,10vw)] leading-[0.9] text-semantic-text-black">
+        <h1 className="font-bebas relative items-center overflow-hidden text-[clamp(4.4rem,12vw,10vw)] leading-[0.9] text-semantic-text-black">
           {heading}
         </h1>
         {subtitle && (
