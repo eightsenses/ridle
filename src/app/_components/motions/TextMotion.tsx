@@ -30,33 +30,38 @@ const TextMotion: FC<TextMotionProps> = ({
     () => {
       if (!containerRef.current) return;
 
-      gsap.set('.is-text-overlay', {
-        scaleX: 0,
-        transformOrigin: direction === 'left' ? 'left' : 'right'
-      });
-      gsap.set('.is-text', { opacity: 0 });
+      const overlay = containerRef.current.querySelector<HTMLSpanElement>('.is-text-overlay');
+      const text = containerRef.current.querySelector<HTMLSpanElement>('.is-text');
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 85%',
-          once: true
-        }
-      });
-
-      tl.to('.is-text-overlay', {
-        scaleX: 1,
-        duration: duration * 0.5,
-        ease: 'power3.out',
-        delay: delay
-      })
-        .set('.is-text', { opacity: 1 })
-        .to('.is-text-overlay', {
+      if (overlay && text) {
+        gsap.set(overlay, {
           scaleX: 0,
-          transformOrigin: direction === 'left' ? 'right' : 'left',
-          duration: duration * 0.5,
-          ease: 'power2.inOut'
+          transformOrigin: direction === 'left' ? 'left' : 'right'
         });
+        gsap.set(text, { opacity: 0 });
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top 85%',
+            once: true
+          }
+        });
+
+        tl.to(overlay, {
+          scaleX: 1,
+          duration: duration * 0.5,
+          ease: 'power3.out',
+          delay: delay
+        })
+          .set(text, { opacity: 1 })
+          .to(overlay, {
+            scaleX: 0,
+            transformOrigin: direction === 'left' ? 'right' : 'left',
+            duration: duration * 0.5,
+            ease: 'power2.inOut'
+          });
+      }
     },
     { scope: containerRef, dependencies: [bgColor, duration, delay, direction] }
   );
