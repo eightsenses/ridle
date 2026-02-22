@@ -3,7 +3,7 @@ import { useRef, ReactNode, FC } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/lib/utils';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -67,7 +67,7 @@ const TextMotion: FC<TextMotionProps> = ({
   );
 
   return (
-    <div ref={containerRef} className={twMerge('relative inline-grid overflow-hidden', className)}>
+    <div ref={containerRef} className={cn('relative inline-grid overflow-hidden', className)}>
       <span className="is-text relative block opacity-0">{children}</span>
       <span
         className={`is-text-overlay absolute inset-0 z-10 ${bgColor}`}

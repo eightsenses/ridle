@@ -3,7 +3,7 @@ import { useRef, ReactNode, FC } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/lib/utils';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -58,7 +58,7 @@ const FadeUp: FC<FadeUpProps> = ({
   );
 
   return (
-    <div className={twMerge('is-animated', className)} ref={containerRef}>
+    <div className={cn('is-animated', className)} ref={containerRef}>
       {children}
     </div>
   );

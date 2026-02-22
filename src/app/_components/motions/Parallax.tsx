@@ -3,7 +3,7 @@ import { useRef, ReactNode, FC } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/lib/utils';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -57,7 +57,7 @@ const Parallax: FC<ParallaxProps> = ({
   );
 
   return (
-    <div ref={containerRef} className={twMerge(className)}>
+    <div ref={containerRef} className={cn(className)}>
       {children}
     </div>
   );

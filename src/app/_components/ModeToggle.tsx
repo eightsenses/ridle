@@ -4,8 +4,13 @@ import { useState, useEffect, FC } from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
-const ModeToggle: FC = () => {
+interface ModeToggleProps {
+  className?: string;
+}
+
+const ModeToggle: FC<ModeToggleProps> = ({ className }) => {
   const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -15,7 +20,7 @@ const ModeToggle: FC = () => {
 
   if (!mounted) return null;
   return (
-    <div className="inline-flex items-center gap-2">
+    <div className={cn('inline-flex items-center gap-2', className)}>
       <Button
         type="button"
         variant={resolvedTheme === 'light' ? 'modeOn' : 'modeOff'}
