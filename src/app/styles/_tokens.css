@@ -231,7 +231,7 @@
   --colors-semantic-background-primary: rgb(79 148 189);
   --colors-semantic-background-scondary: rgb(163 202 221);
   --colors-semantic-background-star: rgb(243 157 95);
-  --colors-semantic-background-subtle: rgb(100 100 100);
+  --colors-semantic-background-subtle: rgb(219 219 219);
   --colors-semantic-background-thin: rgb(255 255 255);
   --colors-semantic-background-white: rgb(255 255 255);
   --colors-semantic-border-btn-primary-enabled: rgb(79 148 189);
@@ -303,7 +303,7 @@
   --colors-semantic-background-primary: rgb(240 132 55);
   --colors-semantic-background-scondary: rgb(246 181 135);
   --colors-semantic-background-star: rgb(243 157 95);
-  --colors-semantic-background-subtle: rgb(219 219 219);
+  --colors-semantic-background-subtle: rgb(100 100 100);
   --colors-semantic-background-thin: rgb(34 34 34);
   --colors-semantic-background-white: rgb(255 255 255);
   --colors-semantic-border-btn-primary-enabled: rgb(240 132 55);
