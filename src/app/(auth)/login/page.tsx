@@ -9,9 +9,13 @@ import Logo from '@/assets/svg/logo.svg';
 import Link from 'next/link';
 import Image from 'next/image';
 import LoginBg from '@/assets/images/login-bg.jpg';
+import { useAuthGuard } from '@/app/(auth)/_hooks/useAuthGuard';
+import Loader from '@/app/_components/Loader';
 
 export default function Login() {
   const router = useRouter();
+  const { isLoading, session } = useAuthGuard();
+  if (isLoading || session) return <Loader isFullPage={true} />;
 
   const handleSubmit = async (data: AuthFormData) => {
     const { email, password } = data;

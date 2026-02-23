@@ -5,8 +5,12 @@ import AuthTextLink from '@/app/(auth)/_components/AuthTextLink';
 import { AuthFormData } from '@/app/(auth)/_types/auth';
 import toast from 'react-hot-toast';
 import PageHeader from '@/app/_components/PageHeader';
+import { useAuthGuard } from '@/app/(auth)/_hooks/useAuthGuard';
+import Loader from '@/app/_components/Loader';
 
 export default function Signup() {
+  const { isLoading, session } = useAuthGuard();
+  if (isLoading || session) return <Loader isFullPage={true} />;
   const handleSubmit = async (data: AuthFormData, reset: () => void) => {
     const { name, email, password } = data;
 
