@@ -26,8 +26,8 @@ const Concept: FC<ConceptProps> = ({ title, texts, imageBg }) => {
           </div>
           <div className="is-zoom-content absolute inset-0 grid place-items-center">
             <div className="absolute inset-0 bg-black/15" />
-            <div className="relative mx-auto flex w-fit gap-6 px-6 max-md:flex-col md:gap-12">
-              <div className="text-4xl/tight font-semibold text-white max-md:text-center md:text-6xl/snug">
+            <div className="relative mx-auto flex w-fit flex-col gap-6 px-6 md:flex-row md:gap-12">
+              <div className="text-center text-4xl/tight font-semibold text-white md:text-left md:text-6xl/snug">
                 {title}
               </div>
               <div className="grid gap-5">

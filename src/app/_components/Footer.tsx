@@ -12,11 +12,11 @@ const Footer: FC = () => {
   };
 
   return (
-    <footer className="flex w-full items-center justify-between px-6 py-8 max-md:flex-col-reverse max-md:gap-4 max-md:pb-4xl md:px-8">
+    <footer className="flex w-full flex-col-reverse items-center justify-between gap-4 px-6 py-8 max-md:pb-4xl md:flex-row md:px-8">
       <p className="text-right text-[14px] font-normal leading-none tracking-widest text-semantic-text-default">
         &copy;{year} Ridle
       </p>
-      <div className="flex shrink-0 items-center gap-4 max-md:flex-col md:gap-6">
+      <div className="flex shrink-0 flex-col items-center gap-4 md:flex-row md:gap-6">
         <Link
           href="/contact"
           className="text-right text-[14px] font-normal leading-none text-semantic-text-default hover:underline"
