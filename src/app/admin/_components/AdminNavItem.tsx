@@ -20,12 +20,12 @@ const AdminNavItem: FC<AdminNavItemProps> = ({ href, className, icon: Icon, labe
     <Link
       href={href}
       className={cn(
-        'flex w-full items-center gap-2 px-2 py-4 transition-colors duration-300 hover:bg-semantic-background-subtle max-lg:flex-col lg:rounded-sm lg:px-4',
+        'flex w-full flex-col items-center gap-2 px-2 py-4 transition-colors duration-300 hover:bg-semantic-background-subtle lg:flex-row lg:rounded-sm lg:px-4',
         isActive && 'bg-semantic-background-primary hover:bg-semantic-background-primary',
         className
       )}
     >
-      <Icon className={cn('tw-6 h-6', isActive && 'text-semantic-text-white', className)} />
+      <Icon className={cn('h-6 w-6', isActive && 'text-semantic-background-white', className)} />
       <span
         className={cn(
           'whitespace-nowrap text-[10px] font-semibold lg:text-base',
