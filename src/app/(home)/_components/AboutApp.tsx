@@ -39,7 +39,7 @@ const AboutApp: FC<AboutAppProps> = ({
             </div>
           </FadeUp>
 
-          <div className="max-xl:flex max-xl:justify-center max-xl:gap-5">
+          <div className="flex justify-center gap-5 xl:block">
             <Parallax
               y={130}
               scrub={1.2}
@@ -50,7 +50,7 @@ const AboutApp: FC<AboutAppProps> = ({
             <Parallax
               y={130}
               scrub={1.2}
-              className="mx-auto w-full max-w-xl max-md:hidden xl:absolute xl:right-0 xl:top-32 2xl:top-6 2xl:max-w-3xl"
+              className="mx-auto hidden w-full max-w-xl md:block xl:absolute xl:right-0 xl:top-32 2xl:top-6 2xl:max-w-3xl"
             >
               <LogoJp className="block h-auto w-full fill-current text-semantic-background-default xl:origin-bottom-right xl:-rotate-90" />
             </Parallax>
