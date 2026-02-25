@@ -38,7 +38,7 @@ const HeroVisual: FC<HeroVisualProps> = ({ heading, subtitle, imagePc, imageSp }
         <source media="(max-width: 767px)" srcSet={sp} />
         <img {...rest} alt="Ridle" />
       </picture>
-      <div className="relative mt-[calc(110px+3vw)] grid gap-2 max-md:text-center md:ml-16">
+      <div className="relative mt-[calc(110px+3vw)] grid gap-2 text-center md:ml-16 md:text-left">
         <h1 className="relative items-center overflow-hidden font-bebas text-[clamp(4.4rem,12vw,10vw)] leading-[0.9] text-semantic-text-black">
           {heading}
         </h1>

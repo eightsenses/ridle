@@ -28,7 +28,7 @@ const Header: FC = () => {
             <Logo className="w-full" />
           </Link>
         </div>
-        <div className="fixed right-0 flex w-screen items-center max-md:bottom-0 max-md:w-full md:absolute md:top-1/2 md:w-fit md:shrink-0 md:-translate-y-1/2 md:gap-4">
+        <div className="fixed bottom-0 right-0 flex w-full items-center md:absolute md:bottom-auto md:top-1/2 md:w-fit md:shrink-0 md:-translate-y-1/2 md:gap-4">
           <Button asChild size="sm" className="py-3 text-center max-md:w-1/2 max-md:rounded-none">
             {session ? <Link href="/admin">マイページ</Link> : <Link href="/signup">新規登録</Link>}
           </Button>
