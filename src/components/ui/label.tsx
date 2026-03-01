@@ -6,9 +6,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '@/lib/utils';
 
-const labelVariants = cva(
-  'mb-2 block text-[14px] font-medium text-[var(--colors-semantic-text-default)]'
-);
+const labelVariants = cva('mb-2 block text-sm/tight font-medium');
 
 const Label = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,

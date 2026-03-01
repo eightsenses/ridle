@@ -16,6 +16,7 @@ const buttonVariants = cva(
 
         outline:
           'border border-semantic-border-default bg-btn-secondary text-semantic-text-btn-secondary transition-colors duration-300 hover:bg-semantic-background-btn-secondary-hover',
+        ghost: 'bg-transparent transition-colors duration-300 hover:bg-semantic-background-subtle',
         modeOn: 'pointer-events-none bg-semantic-background-primary text-semantic-text-btn-primary',
         modeOff: 'text-semantic-btn-secondary'
       },
@@ -23,7 +24,8 @@ const buttonVariants = cva(
         default: 'w-full',
         sm: 'w-[140px]',
         md: 'w-[180px]',
-        lg: 'w-[320px]'
+        lg: 'w-[320px]',
+        icon: 'h-8 w-8 p-0'
       }
     },
     defaultVariants: {

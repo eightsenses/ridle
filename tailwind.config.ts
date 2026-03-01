@@ -10,7 +10,7 @@ const semanticColors = {
     subtle: 'var(--colors-semantic-background-subtle)',
     gray: 'var(--colors-semantic-background-gray)',
     primary: 'var(--colors-semantic-background-primary)',
-    secondary: 'var(--colors-semantic-background-scondary)',
+    secondary: 'var(--colors-semantic-background-secondary)',
     dashboard: 'var(--colors-semantic-background-dashboard)',
     star: 'var(--colors-semantic-background-star)',
     opacity: {
@@ -40,25 +40,25 @@ const semanticColors = {
     subtle: 'var(--colors-semantic-text-subtle)',
     gray: 'var(--colors-semantic-text-gray)',
     primary: 'var(--colors-semantic-text-primary)',
-    secondary: 'var(--colors-semantic-text-scondary)',
+    secondary: 'var(--colors-semantic-text-secondary)',
     placeholder: 'var(--colors-semantic-text-placeholder)',
     danger: 'var(--colors-semantic-text-danger)',
     success: 'var(--colors-semantic-text-success)',
     btn: {
       primary: 'var(--colors-semantic-text-btn-primary-text)',
-      secondary: 'var(--colors-semantic-text-btn-scondary-text)',
+      secondary: 'var(--colors-semantic-text-btn-secondary-text)',
       brand: 'var(--colors-semantic-text-btn-brand-text)'
     }
   },
   border: {
-    default: 'var(--colors-semantic-boder-default)',
-    heavy: 'var(--colors-semantic-boder-heavy)',
-    middle: 'var(--colors-semantic-boder-middle)',
-    thin: 'var(--colors-semantic-boder-thin)',
-    white: 'var(--colors-semantic-boder-white)',
+    default: 'var(--colors-semantic-border-default)',
+    heavy: 'var(--colors-semantic-border-heavy)',
+    middle: 'var(--colors-semantic-border-middle)',
+    thin: 'var(--colors-semantic-border-thin)',
+    white: 'var(--colors-semantic-border-white)',
     btn: {
-      primary: 'var(--colors-semantic-boder-btn-primary-enabled)',
-      secondary: 'var(--colors-semantic-boder-btn-seconday-enabled)'
+      primary: 'var(--colors-semantic-border-btn-primary-enabled)',
+      secondary: 'var(--colors-semantic-border-btn-secondary-enabled)'
     }
   },
   logo: {
