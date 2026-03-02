@@ -1,24 +1,10 @@
 import { NextResponse, NextRequest } from 'next/server';
-import { PrismaClient } from '@prisma/client';
-import { supabase } from '@/utils/supabase';
-const prisma = new PrismaClient();
+import { prisma } from '@/lib/prisma';
+import { checkAuth } from '@/utils/supabase';
 
 export const POST = async (request: NextRequest) => {
-  const authHeader = request.headers.get('Authorization');
-  const token = authHeader?.replace('Bearer ', '');
-
-  if (!token) {
-    return NextResponse.json({ error: 'トークンが見つかりません' }, { status: 401 });
-  }
-
-  const {
-    data: { user },
-    error
-  } = await supabase.auth.getUser(token);
-
-  if (error || !user) {
-    return NextResponse.json({ error: '認証されていません' }, { status: 401 });
-  }
+  const { isAuthorized, response, user } = await checkAuth(request);
+  if (!isAuthorized) return response;
 
   const userMetadata = user.user_metadata;
   const userName = (userMetadata?.userName as string | undefined)?.trim();
