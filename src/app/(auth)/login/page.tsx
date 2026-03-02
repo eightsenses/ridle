@@ -16,21 +16,27 @@ import { Button } from '@/components/ui/button';
 
 export default function Login() {
   const [resendEmail, setResendEmail] = useState<string | null>(null);
+  const [isResending, setIsResending] = useState(false);
   const router = useRouter();
   const { isLoading, session } = useAuthGuard();
   if (isLoading || session) return <Loader isFullPage={true} />;
 
   const handleResend = async () => {
-    if (!resendEmail) return;
-    const { error } = await supabase.auth.resend({
-      type: 'signup',
-      email: resendEmail
-    });
-    if (error) {
-      toast.error('再送に失敗しました');
-    } else {
-      setResendEmail(null);
-      toast.success('認証メールを再送しました');
+    if (!resendEmail || isResending) return;
+    try {
+      setIsResending(true);
+      const { error } = await supabase.auth.resend({
+        type: 'signup',
+        email: resendEmail
+      });
+      if (error) {
+        toast.error('再送に失敗しました');
+      } else {
+        setResendEmail(null);
+        toast.success('認証メールを再送しました');
+      }
+    } finally {
+      setIsResending(false);
     }
   };
 
@@ -114,6 +120,7 @@ export default function Login() {
                 variant="secondary"
                 size="md"
                 onClick={handleResend}
+                disabled={isResending}
                 className="text-sm/none shadow-[0px_2px_6px_0px_rgba(0,0,0,0.1)]"
               >
                 認証メール送る

@@ -13,5 +13,5 @@ export const useRouteGuard = () => {
     }
   }, [router, session, isLoading]);
 
-  return { session, isLoading };
+  return { isLoading: isLoading || !session };
 };
