@@ -11,11 +11,28 @@ import Image from 'next/image';
 import LoginBg from '@/assets/images/login-bg.jpg';
 import { useAuthGuard } from '@/app/(auth)/_hooks/useAuthGuard';
 import Loader from '@/app/_components/Loader';
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
 
 export default function Login() {
+  const [resendEmail, setResendEmail] = useState<string | null>(null);
   const router = useRouter();
   const { isLoading, session } = useAuthGuard();
   if (isLoading || session) return <Loader isFullPage={true} />;
+
+  const handleResend = async () => {
+    if (!resendEmail) return;
+    const { error } = await supabase.auth.resend({
+      type: 'signup',
+      email: resendEmail
+    });
+    if (error) {
+      toast.error('再送に失敗しました');
+    } else {
+      setResendEmail(null);
+      toast.success('認証メールを再送しました');
+    }
+  };
 
   const handleSubmit = async (data: AuthFormData) => {
     const { email, password } = data;
@@ -26,7 +43,13 @@ export default function Login() {
     });
 
     if (error) {
-      toast.error('ログインに失敗しました');
+      if (error.message === 'Email not confirmed') {
+        setResendEmail(email);
+        toast.error('メール認証が完了していません');
+      } else {
+        setResendEmail(null);
+        toast.error('ログインに失敗しました');
+      }
       return;
     }
 
@@ -51,9 +74,12 @@ export default function Login() {
 
       if (res.ok) {
         router.replace('/admin');
+      } else {
+        toast.error('プロフィールの作成に失敗しました');
       }
     } catch (error) {
       console.error('エラーが発生しました', error);
+      toast.error('ログイン処理中にエラーが発生しました');
     }
   };
 
@@ -77,6 +103,23 @@ export default function Login() {
           <div className="text-center text-[14px] font-normal leading-[1.6] tracking-[0.21px] text-semantic-text-gray">
             <AuthTextLink href={'/forgot-password'}>パスワードを忘れた方はこちら</AuthTextLink>
           </div>
+          {resendEmail && (
+            <div className="flex flex-col gap-3 border-t border-semantic-background-subtle pt-8 text-center">
+              <p className="text-sm">
+                メール認証が完了していません。
+                <br />
+                再認証をしてください。
+              </p>
+              <Button
+                variant="secondary"
+                size="md"
+                onClick={handleResend}
+                className="text-sm/none shadow-[0px_2px_6px_0px_rgba(0,0,0,0.1)]"
+              >
+                認証メール送る
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </section>
