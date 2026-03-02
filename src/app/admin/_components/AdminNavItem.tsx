@@ -14,7 +14,7 @@ interface AdminNavItemProps {
 
 const AdminNavItem: FC<AdminNavItemProps> = ({ href, className, icon: Icon, label }) => {
   const pathname = usePathname();
-  const isActive = pathname === href;
+  const isActive = href === '/admin' ? pathname === href : pathname.startsWith(href);
 
   return (
     <Link

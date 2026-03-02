@@ -37,3 +37,9 @@ body {
 @utility text-balance {
   text-wrap: balance;
 }
+
+@layer components {
+  .admin-main {
+    @apply bg-semantic-background-white p-6 md:p-12;
+  }
+}

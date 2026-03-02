@@ -1,7 +1,7 @@
 'use client';
 import { Eye, EyeOff } from 'lucide-react';
 import React, { useState } from 'react';
-import { FieldValues, Path, UseFormRegister } from 'react-hook-form';
+import { FieldValues, Path, UseFormRegister, RegisterOptions } from 'react-hook-form';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
@@ -13,6 +13,7 @@ export interface InputProps<
   placeholder?: string;
   field: Path<T>;
   register: UseFormRegister<T>;
+  registerOptions?: RegisterOptions<T, Path<T>>;
   error?: string;
   isSubmitting?: boolean;
 }
@@ -22,6 +23,7 @@ const InputField = <T extends FieldValues>({
   type,
   field,
   register,
+  registerOptions,
   placeholder,
   error,
   isSubmitting = false
@@ -36,27 +38,32 @@ const InputField = <T extends FieldValues>({
     <div>
       <Label>{label}</Label>
       {!isPassword ? (
-        <Input type={type} placeholder={placeholder} {...register(field)} disabled={isSubmitting} />
+        <Input
+          type={type}
+          placeholder={placeholder}
+          {...register(field, registerOptions)}
+          disabled={isSubmitting}
+        />
       ) : (
         <div className="relative">
           <Input
             type={passwordType}
             placeholder={placeholder}
-            {...register(field)}
+            {...register(field, registerOptions)}
             disabled={isSubmitting}
           />
 
           <button
             type="button"
             onClick={togglePasswordIcon}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-semantic-text-gray"
             aria-label="Toggle password visibility"
           >
             {isShowPassword ? <EyeOff size={20} /> : <Eye size={20} />}
           </button>
         </div>
       )}
-      {error && <p className="mt-1 text-[14px] text-red-500">{error}</p>}
+      {error && <p className="mt-1 text-[14px] text-semantic-text-danger">{error}</p>}
     </div>
   );
 };
