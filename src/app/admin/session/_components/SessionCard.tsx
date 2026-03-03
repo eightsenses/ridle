@@ -18,7 +18,7 @@ const SessionCard: FC<SessionCardProps> = ({ session, className }) => {
   const dateStr = format(session.date, 'yyyy.MM.dd');
 
   return (
-    <div className="relative">
+    <article className="relative">
       <Link
         href={`/admin/session/${session.id}`}
         className={cn(
@@ -74,7 +74,7 @@ const SessionCard: FC<SessionCardProps> = ({ session, className }) => {
           )}
         />
       </Link>
-    </div>
+    </article>
   );
 };
 export default SessionCard;

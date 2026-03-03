@@ -14,7 +14,7 @@ import TextMotion from '@/app/_components/motions/TextMotion';
 
 const Features: FC<CtaBase> = ({ buttonHref, buttonLabel }) => {
   return (
-    <section className="mx-auto max-w-6xl px-6">
+    <section className="mx-auto mb-20 max-w-6xl px-6 md:mb-32">
       <div className="flex flex-col-reverse gap-12 lg:flex-row">
         <h2 className="mb-6 flex-1 text-center text-[40px] font-bold leading-tight tracking-wide md:text-7xl/tight lg:text-left">
           波に乗る

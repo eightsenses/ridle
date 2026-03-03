@@ -30,26 +30,26 @@ const Parallax: FC<ParallaxProps> = ({
     () => {
       if (!containerRef.current) return;
       const mm = gsap.matchMedia();
-      mm.add('(min-width: 1024px)', () => {
-        const animationProps: gsap.TweenVars = {};
+      //mm.add('(min-width: 1024px)', () => {
+      const animationProps: gsap.TweenVars = {};
 
-        if (y !== 0) animationProps.y = y;
-        if (x !== 0) animationProps.x = x;
-        if (scale !== 1) animationProps.scale = scale;
+      if (y !== 0) animationProps.y = y;
+      if (x !== 0) animationProps.x = x;
+      if (scale !== 1) animationProps.scale = scale;
 
-        if (Object.keys(animationProps).length > 0) {
-          gsap.to(containerRef.current, {
-            ...animationProps,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: scrub
-            }
-          });
-        }
-      });
+      if (Object.keys(animationProps).length > 0) {
+        gsap.to(containerRef.current, {
+          ...animationProps,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: scrub
+          }
+        });
+      }
+      //});
 
       return () => mm.revert();
     },
