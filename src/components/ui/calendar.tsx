@@ -50,12 +50,12 @@ function Calendar({
         ),
         button_previous: cn(
           buttonVariants({ variant: buttonVariant }),
-          'flex h-[--cell-size] w-[--cell-size] select-none items-center justify-center p-0 aria-disabled:opacity-50',
+          'flex h-[--cell-size] w-[--cell-size] select-none items-center justify-center p-0 aria-disabled:pointer-events-none aria-disabled:opacity-50',
           defaultClassNames.button_previous
         ),
         button_next: cn(
           buttonVariants({ variant: buttonVariant }),
-          'flex h-[--cell-size] w-[--cell-size] select-none items-center justify-center p-0 aria-disabled:opacity-50',
+          'flex h-[--cell-size] w-[--cell-size] select-none items-center justify-center p-0 aria-disabled:pointer-events-none aria-disabled:opacity-50',
           defaultClassNames.button_next
         ),
         month_caption: cn(
