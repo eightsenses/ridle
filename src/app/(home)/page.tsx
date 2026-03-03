@@ -11,6 +11,7 @@ import MocImageDark from '@/assets/images/home/device@dark.png';
 import ConceptImage from '@/assets/images/home/message.jpg';
 import FadeUp from '@/app/_components/motions/FadeUpMotion';
 import TextMotion from '@/app/_components/motions/TextMotion';
+import Tagline from './_components/Tagline';
 
 export default function Home() {
   return (
@@ -45,6 +46,17 @@ export default function Home() {
       />
       <Wave />
       <Features buttonLabel="今すぐはじめよう" buttonHref="/signup" />
+      <Tagline
+        text={
+          <>
+            Catch <br className="md:hidden" />
+            the Moment. <br className="md:hidden" />
+            <br />
+            Begin <br className="md:hidden" />
+            Your Next.
+          </>
+        }
+      />
       <Concept
         title={
           <>
