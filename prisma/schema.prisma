@@ -6,7 +6,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 enum FollowStatus {
@@ -128,20 +130,24 @@ model UserSpot {
 model Area {
   id             Int    @id @default(autoincrement())
   name           String
+  slug           String @unique
   region         String
   prefectureCode String
 
   spots Spot[]
+
+  @@index([prefectureCode])
 }
 
 model Spot {
-  id          Int    @id @default(autoincrement())
+  id          Int     @id @default(autoincrement())
   areaId      Int
   name        String
+  slug        String
   lat         Float
   lon         Float
   orientation String
-  notes       String
+  notes       String?
 
   area Area @relation(fields: [areaId], references: [id])
 
@@ -150,6 +156,8 @@ model Spot {
   userSpots   UserSpot[]
   spotReports SpotReport[]
 
+  @@unique([areaId, slug]) // ★ /area/shounan/park を一意にする核心
+  @@unique([areaId, name]) // 任意: 同名重複防止
   @@index([areaId])
 }
 
