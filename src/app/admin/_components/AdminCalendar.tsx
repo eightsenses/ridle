@@ -11,7 +11,7 @@ interface SessionCalendarProps {
   onMonthChange: (month: Date) => void;
   onDayClick: (date: Date) => void;
 }
-
+const today = new Date();
 const SessionCalendar: FC<SessionCalendarProps> = ({
   sessionDates,
   selectedDate,
@@ -19,7 +19,6 @@ const SessionCalendar: FC<SessionCalendarProps> = ({
   onMonthChange,
   onDayClick
 }) => {
-  const today = new Date();
   return (
     <Calendar
       mode="single"
@@ -28,6 +27,7 @@ const SessionCalendar: FC<SessionCalendarProps> = ({
       month={month}
       onMonthChange={onMonthChange}
       endMonth={today}
+      disabled={{ after: today }}
       weekStartsOn={1}
       locale={enUS}
       modifiers={{
