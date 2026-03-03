@@ -1,5 +1,5 @@
 'use client';
-import { useRef, ReactNode, ComponentPropsWithoutRef } from 'react';
+import { useRef, ReactNode, ComponentPropsWithoutRef, FC } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
@@ -15,14 +15,14 @@ interface TextRevealMotionProps extends ComponentPropsWithoutRef<'section'> {
   end?: string;
 }
 
-const TextRevealMotion = ({
+const TextRevealMotion: FC<TextRevealMotionProps> = ({
   children,
   className,
   type = 'words',
   start = 'top top',
   end = '+=150%',
   ...sectionProps
-}: TextRevealMotionProps) => {
+}) => {
   const containerRef = useRef<HTMLElement>(null);
 
   useGSAP(
