@@ -23,7 +23,7 @@ const useSessionDetail = (id: string, token?: string | null) => {
     const data = await res.json();
     return data.session;
   };
-  return useSWR<Session>(token ? `/api/admin/session/${id}` : null, fetcher);
+  return useSWR<Session>(token ? `/api/admin/sessions/${id}` : null, fetcher);
 };
 
 //セッション編集・削除
@@ -48,7 +48,7 @@ export default function EditSession({ params }: { params: { id: string } }) {
   const handleSubmit = async (data: SessionFormData) => {
     if (!token) return;
     try {
-      const res = await fetch(`/api/admin/session/${params.id}`, {
+      const res = await fetch(`/api/admin/sessions/${params.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ export default function EditSession({ params }: { params: { id: string } }) {
     if (!token) return;
     if (!window.confirm('このセッションを削除しますか？')) return;
     try {
-      const res = await fetch(`/api/admin/session/${params.id}`, {
+      const res = await fetch(`/api/admin/sessions/${params.id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

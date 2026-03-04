@@ -29,7 +29,7 @@ const useAdminSession = (token?: string | null) => {
     return data.sessions;
   };
   const { data, error, isLoading } = useSWR<Session[]>(
-    token ? '/api/admin/session' : null,
+    token ? '/api/admin/sessions' : null,
     fetcher
   );
   return { sessions: data, error, isLoading };

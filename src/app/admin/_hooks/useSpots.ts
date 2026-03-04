@@ -14,5 +14,5 @@ export const useSpots = (token?: string | null) => {
     const data = await res.json();
     return data.spots as Spot[];
   };
-  return useSWR<Spot[]>(token ? '/api/admin/spot' : null, fetcher);
+  return useSWR<Spot[]>(token ? '/api/admin/spots' : null, fetcher);
 };
