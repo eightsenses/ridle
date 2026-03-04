@@ -50,7 +50,7 @@ export default function Home() {
         text={
           <>
             Catch <br className="md:hidden" />
-            the Moment. <br className="md:hidden" />
+            the Moment.
             <br />
             Begin <br className="md:hidden" />
             Your Next.

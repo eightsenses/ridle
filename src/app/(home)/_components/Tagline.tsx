@@ -9,7 +9,7 @@ interface TextRevealSectionProps {
 const TextRevealSection: FC<TextRevealSectionProps> = ({ text }) => {
   return (
     <TextRevealMotion id="textSection">
-      <p className="whitespace-pre-line text-[clamp(6.4rem,12vw,14rem)] uppercase leading-[0.84] tracking-wide underline-offset-8">
+      <p className="whitespace-pre-line text-[clamp(5.5rem,12vw,14rem)] uppercase leading-[0.84] tracking-wide underline-offset-8">
         {text}
       </p>
     </TextRevealMotion>
