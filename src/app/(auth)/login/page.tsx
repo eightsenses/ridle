@@ -70,7 +70,7 @@ export default function Login() {
         throw new Error('セッション取得エラー');
       }
 
-      const res = await fetch('/api/profile', {
+      const res = await fetch('/api/profiles', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

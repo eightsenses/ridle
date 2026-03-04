@@ -15,7 +15,7 @@ export default function CreateSession() {
   const handleSubmit = async (data: SessionFormData) => {
     if (!token) return;
     try {
-      const res = await fetch('/api/admin/session', {
+      const res = await fetch('/api/admin/sessions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
