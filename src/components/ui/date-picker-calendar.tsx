@@ -28,12 +28,12 @@ function DatePickerCalendar({
         ),
         button_previous: cn(
           buttonVariants({ variant: 'ghost' }),
-          'flex size-8 select-none items-center justify-center p-0 aria-disabled:opacity-50',
+          'flex size-8 select-none items-center justify-center p-0 aria-disabled:pointer-events-none aria-disabled:opacity-50',
           defaultClassNames.button_previous
         ),
         button_next: cn(
           buttonVariants({ variant: 'ghost' }),
-          'flex size-8 select-none items-center justify-center p-0 aria-disabled:opacity-50',
+          'flex size-8 select-none items-center justify-center p-0 aria-disabled:pointer-events-none aria-disabled:opacity-50',
           defaultClassNames.button_next
         ),
         month_caption: cn(

@@ -15,7 +15,7 @@ interface DatePickerFieldProps<T extends FieldValues> {
   error?: string;
   isSubmitting?: boolean;
 }
-
+const today = new Date();
 const DatePickerField = <T extends FieldValues>({
   label,
   field,
@@ -53,7 +53,8 @@ const DatePickerField = <T extends FieldValues>({
               <DatePickerCalendar
                 mode="single"
                 selected={value}
-                disabled={{ after: new Date() }}
+                endMonth={today}
+                disabled={{ after: today }}
                 onSelect={(date) => {
                   onChange(date);
                   setOpen(false);
