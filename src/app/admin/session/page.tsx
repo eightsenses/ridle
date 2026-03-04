@@ -48,15 +48,18 @@ export default function AdminSession() {
       <>
         <AdminHeader title="セッション記録" />
         <AdminMain className="flex flex-col items-center gap-4">
-          <StatusMessage message="セッションがありません" />
+          <StatusMessage
+            className="pb-4 text-center text-sm text-semantic-text-gray"
+            message="セッション記録がありません"
+          />
           <Button
             asChild
             variant="secondary"
-            size="sm"
-            className="flex w-fit items-center gap-1 py-2 text-center text-sm/none shadow-[0px_2px_6px_0px_rgba(0,0,0,0.1)]"
+            size="md"
+            className="mx-auto flex items-center justify-center gap-1 text-center shadow-[0px_2px_6px_0px_rgba(0,0,0,0.1)]"
           >
             <Link href="/admin/session/new">
-              <CirclePlus className="h-4 w-4" />
+              <CirclePlus className="h-6 w-6" />
               新規作成
             </Link>
           </Button>

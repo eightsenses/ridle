@@ -65,7 +65,9 @@ const SessionList: FC<SessionListProps> = ({ sessions, selectedDate, currentMont
           visibleSessions.map((session) => <SessionCard key={session.id} session={session} />)
         ) : (
           <>
-            <p className="py-4 text-center text-sm text-ink-muted">セッション記録がありません</p>
+            <p className="py-4 text-center text-sm text-semantic-text-gray">
+              セッション記録がありません
+            </p>
             <Button
               asChild
               variant="secondary"
