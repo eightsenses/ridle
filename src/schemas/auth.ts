@@ -13,7 +13,8 @@ const passwordSchema = z
 export const signupSchema = z.object({
   name: z.string().min(1, 'ユーザーネームは必須です'),
   email: emailSchema,
-  password: passwordSchema
+  password: passwordSchema,
+  agreeToTerms: z.literal(true, { message: '利用規約への同意は必須です' })
 });
 
 export const loginSchema = z.object({
