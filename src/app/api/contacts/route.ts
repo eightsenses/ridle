@@ -6,6 +6,7 @@ import { ContactRequest } from '@/types/contact';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const fromEmail = process.env.RESEND_FROM_EMAIL as string;
+const fromSlack = process.env.SLACK_FROM_EMAIL as string;
 
 export const POST = async (request: NextRequest) => {
   try {
@@ -19,6 +20,7 @@ export const POST = async (request: NextRequest) => {
     await resend.emails.send({
       from: fromEmail,
       to: fromEmail,
+      bcc: fromSlack,
       subject: `【Ridle】${req.name}様よりお問い合わせがありました`,
       react: createElement(MailTemplate, { senderName: req.name, content: req.message })
     });
