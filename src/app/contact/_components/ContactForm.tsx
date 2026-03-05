@@ -6,7 +6,7 @@ import { contactSchema, type ContactFormData } from '@/schemas/contact';
 import { InputField, TextareaField, SubmitButton } from '@/app/_components/form';
 
 interface ContactFormProps {
-  onSubmit: (data: ContactFormData, reset: () => void) => void;
+  onSubmit: (data: ContactFormData) => Promise<void>;
   buttonText: string;
 }
 
@@ -20,7 +20,17 @@ const ContactForm: FC<ContactFormProps> = ({ onSubmit, buttonText }) => {
     resolver: zodResolver(contactSchema)
   });
   return (
-    <form onSubmit={handleSubmit((data) => onSubmit(data, reset))} className="grid gap-6">
+    <form
+      onSubmit={handleSubmit(async (data) => {
+        try {
+          await onSubmit(data);
+          reset();
+        } catch {
+          /* 親側でエラーハンドリング（トースト表示） */
+        }
+      })}
+      className="grid gap-6"
+    >
       <div className="w-full">
         <InputField
           label="お名前"

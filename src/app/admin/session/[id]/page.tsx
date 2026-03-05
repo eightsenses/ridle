@@ -66,10 +66,11 @@ export default function EditSession({ params }: { params: { id: string } }) {
         router.push(`/admin/session/${resData.session.id}`);
         toast.success('セッション記録を更新しました');
       } else {
-        toast.error(`セッション記録の更新に失敗しました: ${resData.status}`);
+        throw new Error(resData.status);
       }
-    } catch {
+    } catch (e) {
       toast.error('セッション更新の登録に失敗しました');
+      throw e;
     }
   };
   //セッション削除

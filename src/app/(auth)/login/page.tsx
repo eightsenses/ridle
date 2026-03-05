@@ -31,6 +31,7 @@ export default function Login() {
       });
       if (error) {
         toast.error('再送に失敗しました');
+        throw error;
       } else {
         setResendEmail(null);
         toast.success('認証メールを再送しました');
@@ -56,7 +57,7 @@ export default function Login() {
         setResendEmail(null);
         toast.error('ログインに失敗しました');
       }
-      return;
+      throw error;
     }
 
     // ログイン成功後にProfileを作成

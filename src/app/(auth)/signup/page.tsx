@@ -7,11 +7,13 @@ import toast from 'react-hot-toast';
 import PageHeader from '@/app/_components/PageHeader';
 import { useAuthGuard } from '@/app/(auth)/_hooks/useAuthGuard';
 import Loader from '@/app/_components/Loader';
+import { useRouter } from 'next/navigation';
 
 export default function Signup() {
   const { isLoading, session } = useAuthGuard();
+  const router = useRouter();
   if (isLoading || session) return <Loader isFullPage={true} />;
-  const handleSubmit = async (data: AuthFormData, reset: () => void) => {
+  const handleSubmit = async (data: AuthFormData) => {
     const { name, email, password } = data;
 
     const { error } = await supabase.auth.signUp({
@@ -26,9 +28,10 @@ export default function Signup() {
     });
     if (error) {
       toast.error('会員登録に失敗しました');
+      throw error;
     } else {
       toast.success('確認メールを送信しました。メールをご確認ください。');
-      reset();
+      router.push('/login');
     }
   };
 
