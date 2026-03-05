@@ -19,7 +19,7 @@ import { useImageUpload } from '@/app/admin/_hooks/useImageUpload';
 interface SessionFormProps {
   defaultValues?: SessionFormData;
   initialImageUrl?: string | null;
-  onSubmit: (data: SessionFormData, reset: () => void) => void;
+  onSubmit: (data: SessionFormData) => Promise<void>;
   onDelete?: () => void;
   buttonText: string;
   isCancelButton?: boolean;
@@ -60,7 +60,14 @@ const SessionForm: FC<SessionFormProps> = ({
   }, [defaultValues, spots.length, reset]);
   return (
     <form
-      onSubmit={handleSubmit((data) => onSubmit({ ...data, thumbnailImageKey, imageRemoved }, reset))}
+      onSubmit={handleSubmit(async (data) => {
+        try {
+          await onSubmit({ ...data, thumbnailImageKey, imageRemoved });
+          reset();
+        } catch {
+          /* 親側でエラーハンドリング（トースト表示） */
+        }
+      })}
       className="grid w-full gap-6 [&_label]:text-semantic-text-black"
     >
       <section className="grid gap-6 lg:grid-cols-2">

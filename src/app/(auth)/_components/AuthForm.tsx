@@ -9,7 +9,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import Link from 'next/link';
 
 interface AuthFormProps {
-  onSubmit: (data: SignupFormData | LoginFormData, reset: () => void) => void;
+  onSubmit: (data: SignupFormData | LoginFormData) => Promise<void>;
   buttonText: string;
   isShowName?: boolean;
 }
@@ -24,8 +24,19 @@ const AuthForm: FC<AuthFormProps> = ({ onSubmit, buttonText, isShowName = true }
   } = useForm<AuthFormData>({
     resolver: zodResolver(isShowName ? signupSchema : loginSchema)
   });
+
   return (
-    <form onSubmit={handleSubmit((data) => onSubmit(data, reset))} className="grid w-full gap-6">
+    <form
+      onSubmit={handleSubmit(async (data) => {
+        try {
+          await onSubmit(data);
+          reset();
+        } catch {
+          /* 親側でエラーハンドリング（トースト表示） */
+        }
+      })}
+      className="grid w-full gap-6"
+    >
       {isShowName && (
         <div className="w-full">
           <InputField

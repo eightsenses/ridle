@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import PageHeader from '@/app/_components/PageHeader';
 
 export default function Contact() {
-  const handleSubmit = async (data: ContactRequest, reset: () => void) => {
+  const handleSubmit = async (data: ContactRequest) => {
     try {
       const res = await fetch('/api/contacts', {
         method: 'POST',
@@ -20,10 +20,10 @@ export default function Contact() {
         throw new Error('送信に失敗しました');
       }
       toast.success('お問い合わせを送信しました。');
-      reset();
     } catch (error) {
       console.error('お問い合わせ送信エラー:', error);
       toast.error('送信に失敗しました');
+      throw error;
     }
   };
 

@@ -33,10 +33,11 @@ export default function CreateSession() {
         router.push(`/admin/session/${resData.session.id}`);
         toast.success('セッション記録を登録しました');
       } else {
-        toast.error(`セッション記録の登録に失敗しました: ${resData.status}`);
+        throw new Error(resData.status);
       }
-    } catch {
+    } catch (e) {
       toast.error('セッション記録の登録に失敗しました');
+      throw e;
     }
   };
   return (
