@@ -11,7 +11,7 @@ import Image from 'next/image';
 import LoginBg from '@/assets/images/login-bg.jpg';
 import { useAuthGuard } from '@/app/(auth)/_hooks/useAuthGuard';
 import Loader from '@/app/_components/Loader';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 
 export default function Login() {
@@ -19,6 +19,34 @@ export default function Login() {
   const [isResending, setIsResending] = useState(false);
   const router = useRouter();
   const { isLoading, session } = useAuthGuard();
+
+  useEffect(() => {
+    const {
+      data: { subscription }
+    } = supabase.auth.onAuthStateChange(async (event, session) => {
+      if (event === 'SIGNED_IN' && session) {
+        try {
+          const res = await fetch('/api/profiles', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${session.access_token}`
+            }
+          });
+          if (!res.ok) {
+            toast.error('プロフィールの作成に失敗しました');
+            return;
+          }
+          router.replace('/admin');
+        } catch (error) {
+          console.error('エラーが発生しました', error);
+          toast.error('ログイン処理中にエラーが発生しました');
+        }
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, [router]);
+
   if (isLoading || session) return <Loader isFullPage={true} />;
 
   const handleResend = async () => {
@@ -58,35 +86,6 @@ export default function Login() {
         toast.error('ログインに失敗しました');
       }
       throw error;
-    }
-
-    // ログイン成功後にProfileを作成
-    try {
-      const {
-        data: { session }
-      } = await supabase.auth.getSession();
-      const token = session?.access_token;
-
-      if (!token) {
-        throw new Error('セッション取得エラー');
-      }
-
-      const res = await fetch('/api/profiles', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
-        }
-      });
-
-      if (res.ok) {
-        router.replace('/admin');
-      } else {
-        toast.error('プロフィールの作成に失敗しました');
-      }
-    } catch (error) {
-      console.error('エラーが発生しました', error);
-      toast.error('ログイン処理中にエラーが発生しました');
     }
   };
 
