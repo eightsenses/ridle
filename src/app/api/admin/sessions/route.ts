@@ -13,9 +13,14 @@ export const GET = async (request: NextRequest) => {
           supabaseUserId: user.id
         }
       },
-      orderBy: {
-        date: 'desc'
-      }
+      orderBy: [
+        {
+          date: 'desc'
+        },
+        {
+          createdAt: 'desc'
+        }
+      ]
     });
     return NextResponse.json({ status: 'OK', sessions: session }, { status: 200 });
   } catch (error) {
