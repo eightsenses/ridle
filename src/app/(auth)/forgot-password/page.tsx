@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { forgotPasswordSchema, type ForgotPasswordFormData } from '@/schemas/auth';
 import { InputField, SubmitButton } from '@/app/_components/form';
-import AuthTextLink from '@/app/(auth)/_components/AuthTextLink';
+import TextLink from '@/app/_components/TextLink';
 import toast from 'react-hot-toast';
 import PageHeader from '@/app/_components/PageHeader';
 
@@ -54,7 +54,7 @@ export default function ForgotPassword() {
         </SubmitButton>
       </form>
       <div className="text-center text-sm font-normal leading-[1.6] tracking-[0.21px] text-semantic-text-gray">
-        <AuthTextLink href="/login">ログインに戻る</AuthTextLink>
+        <TextLink href="/login">ログインに戻る</TextLink>
       </div>
     </section>
   );

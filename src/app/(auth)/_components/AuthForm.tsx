@@ -54,7 +54,6 @@ const AuthForm: FC<AuthFormProps> = ({ onSubmit, buttonText, isShowName = true }
         <InputField
           label="メールアドレス"
           type="email"
-          placeholder="メールアドレス"
           field="email"
           register={register}
           isSubmitting={isSubmitting}
@@ -66,7 +65,6 @@ const AuthForm: FC<AuthFormProps> = ({ onSubmit, buttonText, isShowName = true }
         <InputField
           label="パスワード"
           type="password"
-          placeholder="パスワード"
           field="password"
           register={register}
           isSubmitting={isSubmitting}

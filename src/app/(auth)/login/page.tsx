@@ -2,7 +2,7 @@
 import { supabase } from '@/utils/supabase';
 import AuthForm from '@/app/(auth)/_components/AuthForm';
 import { AuthFormData } from '@/app/(auth)/_types/auth';
-import AuthTextLink from '@/app/(auth)/_components/AuthTextLink';
+import TextLink from '@/app/_components/TextLink';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import Logo from '@/assets/svg/logo.svg';
@@ -108,7 +108,7 @@ export default function Login() {
           </div>
           <AuthForm onSubmit={handleSubmit} buttonText="ログイン" isShowName={false} />
           <div className="text-center text-[14px] font-normal leading-[1.6] tracking-[0.21px] text-semantic-text-gray">
-            <AuthTextLink href={'/forgot-password'}>パスワードを忘れた方はこちら</AuthTextLink>
+            <TextLink href={'/forgot-password'}>パスワードを忘れた方はこちら</TextLink>
           </div>
           {resendEmail && (
             <div className="flex flex-col gap-3 border-t border-semantic-background-subtle pt-8 text-center">

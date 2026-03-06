@@ -1,7 +1,7 @@
 'use client';
 import { supabase } from '@/utils/supabase';
 import AuthForm from '@/app/(auth)/_components/AuthForm';
-import AuthTextLink from '@/app/(auth)/_components/AuthTextLink';
+import TextLink from '@/app/_components/TextLink';
 import { AuthFormData } from '@/app/(auth)/_types/auth';
 import toast from 'react-hot-toast';
 import PageHeader from '@/app/_components/PageHeader';
@@ -42,7 +42,7 @@ export default function Signup() {
       <div className="text-center text-[14px] font-normal leading-[1.6] tracking-[0.21px] text-semantic-text-gray">
         もうアカウント持ってる？
         <br />
-        <AuthTextLink href={'/login'}>ログインはこちら</AuthTextLink>
+        <TextLink href={'/login'}>ログインはこちら</TextLink>
       </div>
     </section>
   );

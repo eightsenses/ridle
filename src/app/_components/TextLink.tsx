@@ -5,9 +5,9 @@ import { cn } from '@/lib/utils';
 
 type Props = ComponentProps<typeof Link>;
 
-const AuthTextLink: FC<Props> = ({ className, ...props }) => {
+const TextLink: FC<Props> = ({ className, ...props }) => {
   return (
     <Link {...props} className={cn('text-semantic-text-primary hover:underline', className)} />
   );
 };
-export default AuthTextLink;
+export default TextLink;
