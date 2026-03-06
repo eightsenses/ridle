@@ -81,8 +81,7 @@ const InputField = <T extends FieldValues>({
             type="button"
             onClick={togglePasswordIcon}
             className="absolute right-3 top-1/2 -translate-y-1/2 text-semantic-text-gray"
-            aria-label="Toggle password visibility"
-            aria-pressed={isShowPassword}
+            aria-label={isShowPassword ? 'パスワードを表示' : 'パスワードを非表示'}
           >
             {isShowPassword ? <EyeOff size={20} /> : <Eye size={20} />}
           </button>
