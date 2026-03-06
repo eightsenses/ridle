@@ -42,7 +42,7 @@ const SessionForm: FC<SessionFormProps> = ({
     handleImageChange,
     handleImageRemove,
     cleanup
-  } = useImageUpload(initialImageUrl);
+  } = useImageUpload(initialImageUrl, 'session_thumbnail');
   const {
     register,
     handleSubmit,
@@ -91,30 +91,28 @@ const SessionForm: FC<SessionFormProps> = ({
             options={spots.map((spot) => ({ value: spot.id, label: spot.name }))}
           />
         </div>
-        <div className="w-full">
-          <InputField
-            label="サーフタイム（分）"
-            type="number"
-            placeholder="サーフィンした時間（分）"
-            field="surfTimeMinutes"
-            register={register}
-            registerOptions={{ valueAsNumber: true }}
-            isSubmitting={isSubmitting}
-            error={errors.surfTimeMinutes?.message}
-          />
-        </div>
-        <div className="w-full">
-          <InputField
-            label="ライド数"
-            type="number"
-            placeholder="波に乗った回数"
-            field="rideCount"
-            register={register}
-            registerOptions={{ valueAsNumber: true }}
-            isSubmitting={isSubmitting}
-            error={errors.rideCount?.message}
-          />
-        </div>
+        <InputField
+          label="サーフタイム（分）"
+          type="number"
+          placeholder="120"
+          suffix="分"
+          field="surfTimeMinutes"
+          register={register}
+          registerOptions={{ valueAsNumber: true }}
+          isSubmitting={isSubmitting}
+          error={errors.surfTimeMinutes?.message}
+        />
+        <InputField
+          label="ライド数"
+          suffix="本"
+          type="number"
+          placeholder="10"
+          field="rideCount"
+          register={register}
+          registerOptions={{ valueAsNumber: true }}
+          isSubmitting={isSubmitting}
+          error={errors.rideCount?.message}
+        />
       </section>
       <div className="w-full">
         <ImageUploadField
@@ -127,7 +125,7 @@ const SessionForm: FC<SessionFormProps> = ({
       </div>
       <div className="w-full">
         <TextareaField
-          label="課題"
+          label="メモ（課題や目標など）"
           field="challengeNote"
           register={register}
           isSubmitting={isSubmitting}

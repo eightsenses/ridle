@@ -56,7 +56,7 @@ const SessionCard: FC<SessionCardProps> = ({ session, className }) => {
           </div>
           {session.challengeNote && (
             <div className="flex whitespace-pre-wrap text-sm/relaxed text-semantic-text-gray">
-              <div className="">課題：</div>
+              <div className="">メモ：</div>
               <p className="flex-1">{session.challengeNote}</p>
             </div>
           )}
